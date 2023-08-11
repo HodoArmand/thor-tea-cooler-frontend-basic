@@ -52,6 +52,7 @@ class TtcApiInterface
                                 if (result.statusCode === 200 && result.status === "ok")
                                 {
                                     this.state = "initialized";
+                                    this.teaState.setFromResponse(JSON.parse(result.msg));
                                 }
                                 else
                                 {

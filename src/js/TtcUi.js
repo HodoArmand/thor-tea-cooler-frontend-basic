@@ -1,0 +1,6 @@
+class TtcUi
+{
+
+}
+
+export {TtcUi};
