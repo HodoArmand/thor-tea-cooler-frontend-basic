@@ -1,10 +1,12 @@
 import {TtcApiInterface} from "/js/TtcApiInterface.js";
+import {TtcUi} from "/js/TtcUi.js";
 
 class TtcClient
 {
     constructor()
     {
-        this.ttcApi = new TtcApiInterface();
+        this.api = new TtcApiInterface();
+        this.ui = new TtcUi();
     }
 }
 

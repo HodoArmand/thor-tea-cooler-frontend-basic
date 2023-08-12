@@ -25,4 +25,10 @@ const errorResponseToTtcApiResponse = (error) =>
     };
 };
 
-export {responseToTtcApiResponse, responseToTtcApiResponseComplexMsg, errorResponseToTtcApiResponse};
+const formatFloat = (stringValue) =>
+{
+    let parsedValue = parseFloat(stringValue);
+    return parsedValue.toFixed(2);
+};
+
+export {responseToTtcApiResponse, responseToTtcApiResponseComplexMsg, errorResponseToTtcApiResponse, formatFloat};

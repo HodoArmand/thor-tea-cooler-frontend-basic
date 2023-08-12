@@ -3,4 +3,5 @@ node_modules/
 public/css/tea.css
 public/js/*.js
 *.htaccess
-*/*.htaccess
+*/*.htaccess!/package-lock_backup.json
+
