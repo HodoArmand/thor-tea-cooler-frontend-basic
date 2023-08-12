@@ -48,7 +48,6 @@ class TtcApiInterface
                         this.hwRequests.getHardwareState()
                             .then(result =>
                             {
-                                console.log(result);
                                 if (result.statusCode === 200 && result.status === "ok")
                                 {
                                     this.state = "initialized";
@@ -73,8 +72,28 @@ class TtcApiInterface
                 {
                     this.state = "badTtcIp";
                 });
+        }
 
-
+        this.getHardwareState = () =>
+        {
+            this.hwRequests.getHardwareState()
+                .then(result =>
+                {
+                    console.log(result);
+                    if (result.statusCode === 200 && result.status === "ok")
+                    {
+                        console.log(result.msg);
+                        this.teaState.setFromResponse(JSON.parse(result.msg));
+                    }
+                    else
+                    {
+                        console.log("-1- getHardwareState error: " + result.state + result.msg);
+                    }
+                })
+                .catch(error =>
+                {
+                    console.log("-1- getHardwareState error: " + error.state + error.msg);
+                });
         }
     }
 }
