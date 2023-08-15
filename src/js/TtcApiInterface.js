@@ -82,7 +82,6 @@ class TtcApiInterface
                     console.log(result);
                     if (result.statusCode === 200 && result.status === "ok")
                     {
-                        console.log(result.msg);
                         this.teaState.setFromResponse(JSON.parse(result.msg));
                     }
                     else

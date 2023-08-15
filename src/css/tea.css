@@ -20,7 +20,7 @@ html, body {
 
 .bg-green-gradient-animated {
     /*background: url('/img/greenshapes.svg'), linear-gradient(-45deg, #86efac, #f0fdf4, #86efac);*/
-    background: url('/img/greenshapes.svg'), #f0fdf4;   /* with bg-green-50*/
+    background: url('/img/greenshapes.svg'), #f0fdf4; /* with bg-green-50*/
     background-size: 100% 100%, 400% 400%;
     animation: gradient 15s ease infinite;
 }
@@ -60,8 +60,7 @@ html, body {
     @apply flex flex-row space-x-2 font-semibold text-gray-700 hover:text-rose-700 dark:text-gray-200 dark:hover:text-rose-500;
 }
 
-.nav-text
-{
+.nav-text {
     @apply font-semibold text-gray-700 hover:text-emerald-700 dark:text-gray-200 dark:hover:text-emerald-500;
 }
 
@@ -89,8 +88,7 @@ html, body {
     @apply h-10 w-10;
 }
 
-.mode-icon
-{
+.mode-icon {
     @apply w-32 h-32 text-green-800 dark:text-green-400;
 }
 
@@ -117,12 +115,32 @@ html, body {
     background-image: linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
 }
 
-.mode-title
-{
+.mode-title {
     @apply text-xl font-semibold text-gray-800 dark:text-gray-300;
 }
 
-.mode-desc
-{
+.mode-desc {
     @apply mt-3 text-gray-500;
+}
+
+.card-button-right {
+    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
+}
+
+.card-button-left {
+    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800 ;
+}
+
+.button-group-left {
+    @apply py-4 px-4 md:px-8 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
+}
+
+.button-group-right {
+    @apply py-4 px-4 md:px-8 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
+}
+
+@layer components {
+    .control-disabled {
+        @apply disabled:saturate-0 disabled:opacity-30 disabled:cursor-not-allowed;
+    }
 }

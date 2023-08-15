@@ -38,4 +38,14 @@ export const capitalizeFirstLetter = (string) =>
 
     string = firstLetterCap + remainingLetters;
     return string;
-}
+};
+
+export const enableById = (id) =>
+{
+    document.getElementById(id).removeAttribute('disabled');
+};
+
+export const disableById = (id) =>
+{
+    document.getElementById(id).setAttribute('disabled', '');
+};

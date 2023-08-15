@@ -13,14 +13,14 @@
     <script type="module" src="/js/ttcClient.js"></script>
 
 </head>
-<body class="flex flex-col min-h-screen w-full bg-green-50 m-0 p-0 bg-green-gradient-animated dark:bg-green-gradient-animated-dark backdrop-blur-sm">
+<body class="flex flex-col min-h-screen w-full bg-green-50 m-0 p-0 bg-green-gradient-animated dark:bg-green-gradient-animated-dark">
 <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full woodpattern dark:woodpattern-dark text-base py-4 border-b border-green-600/50 dark:border-green-800/50">
     <nav class="w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
         <div class="flex items-center justify-between">
             <div class="flex flex-row items-center gap-x-2 text-xl font-semibold text-emerald-800 dark:text-green-50" href="#">
                 <img src="/img/TTC_logo.svg" class="w-10 h-10">
-                <div class="hidden md:inline w-64 italic">Thor Tea Cooler</div>
-                <div class="inline md:hidden w-32 italic">TTC</div>
+                <h1 class="hidden md:inline w-64 italic">Thor Tea Cooler</h1>
+                <h1 class="inline md:hidden w-32 italic">TTC</h1>
             </div>
             <div class="sm:hidden">
                 <button type="button"
@@ -60,20 +60,20 @@
 
     </nav>
 </header>
-<section id="main" class="h-fit w-full">
+<main class="h-fit w-full">
     <!-- Card Blog -->
     <div class="max-w-full md:mx-5 px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto z-50">
         <!-- Grid -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Card -->
             <div class="group flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                <div class="h-52 flex flex-col justify-center items-center bg-gray-50 rounded-t-xl">
-                    <div>placeholder for graph</div>
+                <div class="h-52 flex flex-col justify-center items-center bg-gray-50 dark:bg-slate-950 rounded-t-xl">
+                    <div class="text-gray-900 dark:text-gray-400">placeholder for graph</div>
                 </div>
                 <div class="p-4 md:p-6">
-        <span class="block mb-1 text-base font-semibold uppercase text-green-600 dark:text-green-500">
-          Temperatures
-        </span>
+                    <h2 class="block mb-1 text-base font-semibold uppercase text-green-600 dark:text-green-500">
+                        Temperatures
+                    </h2>
                     <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300">
                         Current temperature
                     </h3>
@@ -100,13 +100,13 @@
                     </div>
                 </div>
                 <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-                    <button class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-sky-500/75 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    <button class="card-button-left hover:bg-sky-200 dark:hover:bg-sky-500/75"
                             onclick="">
-                        <span><img src="img/mug.svg" class="injectable icon-md inline"> <sup>o</sup>C -</span>
+                        <span><img src="img/mug.svg" class="injectable icon-md inline mr-1"><sup>o</sup>C -</span>
                     </button>
-                    <button class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-rose-500/75 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    <button class="card-button-right hover:bg-rose-200 dark:hover:bg-rose-500/75"
                             onclick="">
-                        <span><img src="img/mug.svg" class="injectable icon-md inline"> <sup>o</sup>C +</span>
+                        <span><img src="img/mug.svg" class="injectable icon-md inline mr-1"><sup>o</sup>C +</span>
                     </button>
                 </div>
             </div>
@@ -114,16 +114,16 @@
 
             <!-- Card -->
             <div class="group flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                <div class="h-52 flex flex-col justify-center items-center bg-gray-50 rounded-t-xl">
+                <div class="h-52 flex flex-col justify-center items-center bg-gray-50 dark:bg-slate-950 rounded-t-xl">
                     <img id="modeIconManual" src="img/modes/manual.svg" class="injectable mode-icon">
                     <img id="modeIconAutoReady" src="img/modes/autoReady.svg" class="injectable mode-icon hidden">
                     <img id="modeIconAutoCooling" src="img/modes/autoCooling.svg" class="injectable mode-icon hidden">
                     <img id="modeIconAutoFinished" src="img/modes/autoFinished.svg" class="injectable mode-icon hidden">
                 </div>
                 <div class="p-4 md:p-6">
-        <span class="block mb-1 text-base font-semibold uppercase text-green-600 dark:text-green-500">
-          Operating mode
-        </span>
+                    <h2 class="block mb-1 text-base font-semibold uppercase text-green-600 dark:text-green-500">
+                        Operating mode
+                    </h2>
                     <h3 id="modeManualTitle" class="mode-title">
                         Manual
                     </h3>
@@ -154,25 +154,26 @@
         </span>
                     <div class="mt-2 w-full flex justify-center">
                         <div class="inline-flex rounded-md shadow-sm w-fit">
-                            <button type="button"
-                                    class="py-4 px-4 md:px-8 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-green-200 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400">
-                                Start
+                            <button id="modeAutoStart" type="button"
+                                    class="button-group-left hover:bg-green-200 dark:hover:bg-green-500/75 disabled:control-disabled">
+                                <span><img src="img/start.svg" class="injectable icon-md inline mr-1">Start</span>
                             </button>
-                            <button type="button"
-                                    class="py-4 px-4 md:px-8 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-rose-200 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400">
-                                Stop
+                            <button id="modeAutoStop" type="button"
+                                    class="button-group-right hover:bg-rose-200 dark:hover:bg-rose-500/75 disabled:control-disabled">
+                                <span><img src="img/stop.svg" class="injectable icon-md inline mr-1">Stop</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-                    <button class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    <button id="modeButtonAuto" class="card-button-left hover:bg-green-200 dark:hover:bg-green-500/75 disabled:control-disabled"
                             onclick="">
-                        Manual Mode
+                        <span><img src="img/modes/autoReady.svg" class="injectable icon-md inline mr-1">Automatic</span>
+
                     </button>
-                    <button class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    <button id="modeButtonManual" class="card-button-right hover:bg-rose-200 dark:hover:bg-rose-500/75 disabled:control-disabled"
                             onclick="">
-                        Automatic Mode
+                        <span><img src="img/modes/manual.svg" class="injectable icon-md inline mr-1">Manual</span>
                     </button>
                 </div>
             </div>
@@ -180,34 +181,37 @@
 
             <!-- Card -->
             <div class="group flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                <div class="h-52 flex flex-col justify-center items-center bg-gray-50 rounded-t-xl">
-                    cooling fan state icons placeholder
+                <div class="h-52 flex flex-row justify-center items-center bg-gray-50 dark:bg-slate-950 rounded-t-xl">
+                    <img id="relayStateIcon1On" src="img/propeller.svg" class="injectable w-32 h-32 text-green-800 dark:text-green-400">
+                    <img id="relayStateIcon2On" src="img/propeller.svg" class="injectable w-32 h-32 text-green-800 dark:text-green-400 hidden">
+                    <img id="relayStateIcon1Off" src="img/propeller_off.svg" class="injectable w-32 h-32 text-gray-700 dark:text-gray-400 hidden">
+                    <img id="relayStateIcon2Off" src="img/propeller_off.svg" class="injectable w-32 h-32 text-gray-700 dark:text-gray-400">
                 </div>
                 <div class="p-4 md:p-6">
         <span class="block mb-1 text-base font-semibold uppercase text-green-600">
           Manual controls
         </span>
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300">
                         Cooling fan #1
                     </h3>
                     <p class="mt-1 text-gray-500">
-                        Status: On/Off
+                        Status: Cooling fan #1 is <span id="relayStateDesc1">On</span>.
                     </p>
-                    <h3 class="mt-1 text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300">
                         Cooling fan #2
                     </h3>
                     <p class="mt-1 text-gray-500">
-                        Status: On/Off
+                        Status: Cooling fan #2 is <span id="relayStateDesc2">On</span>.
                     </p>
                 </div>
                 <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-                    <button class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    <button id="manualSwitchRelay1Button" type="button" class="card-button-left hover:bg-green-200 dark:hover:bg-green-500/75 disabled:control-disabled"
                             onclick="">
-                        Switch #1
+                        <span><img src="img/toggle.svg" class="injectable icon-md inline mr-1 rotate-90">Fan #1</span>
                     </button>
-                    <button class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    <button id="manualSwitchRelay2Button" type="button" class="card-button-right hover:bg-green-200 dark:hover:bg-green-500/75 disabled:control-disabled"
                             onclick="">
-                        Switch #2
+                        <span><img src="img/toggle.svg" class="injectable icon-md inline mr-1 rotate-90">Fan #2</span>
                     </button>
                 </div>
             </div>
@@ -216,7 +220,7 @@
         <!-- End Grid -->
     </div>
     <!-- End Card Blog -->
-</section>
+</main>
 <footer class="bg-green-700 dark:bg-green-900 border-t border-green-800/50 dark:border-green-700/50 mt-auto">
     <div class="max-w-[85rem] py-7 px-4 sm:px-6 lg:px-8 mx-auto">
         <!-- Grid -->
