@@ -321,6 +321,7 @@ const initSSEventlisteners = (sse) =>
             console.log("Tea state received trough SSE: " + event.data);
             window.ttcClient.api.teaState.setFromResponse(teaState_);
             window.ttcClient.setTeaStateValues();
+            window.ttcClient.ui.addDataToTemperatureChart(teaState_.temperature, teaState_.targetTemperature,);
 
         }, false);
     }

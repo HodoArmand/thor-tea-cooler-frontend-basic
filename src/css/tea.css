@@ -120,7 +120,7 @@ html, body {
 }
 
 .mode-desc {
-    @apply mt-3 text-gray-500;
+    @apply mt-3 text-gray-500 dark:text-gray-400;
 }
 
 .card-button-right {
@@ -135,11 +135,7 @@ html, body {
     @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-b-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
 }
 
-.button-group-left {
-    @apply py-4 px-4 md:px-8 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
-}
-
-.button-group-right {
+.button-group-left-right {
     @apply py-4 px-4 md:px-8 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
 }
 
@@ -155,7 +151,7 @@ html, body {
 
 .target-temp-slider
 {
-    @apply w-full h-7 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-blue-300 to-red-500;
+    @apply w-4/5 sm:w-full h-7 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-blue-300 to-red-500;
 }
 
 input[type="range"]::-webkit-slider-thumb {

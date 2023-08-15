@@ -13,7 +13,7 @@ const toggleButtonLoading = (buttonId) =>
 
 const toggleManualSwitchButtonsLoading = (relayNumber) =>
 {
-    relayNumber === 1 ? toggleButtonLoading("manualSwitchRelay1Button") : relayNumber === 2 ? toggleButtonLoading("manualSwitchRelay2Button"): this.ui.openModal('Info','bad relay #', 'The entered relayNumber is invalid. There are only two active cooling fan relays, #1 and #2.');
+    relayNumber === 1 ? toggleButtonLoading("manualSwitchRelay1Button") : relayNumber === 2 ? toggleButtonLoading("manualSwitchRelay2Button") : this.ui.openModal('Info', 'bad relay #', 'The entered relayNumber is invalid. There are only two active cooling fan relays, #1 and #2.');
 };
 
 const toggleTargetTempButtonsLoading = () =>
@@ -32,12 +32,28 @@ const toggleModeButtonsLoading = () =>
 
 };
 
+const temperatureToBarLength = (temperature) =>
+{
+    let barLength = 30.00;
+    if (temperature <= 30.00)
+    {
+        return barLength;
+    }
+    else
+    {
+        barLength = temperature % 100;
+
+        return barLength;
+    }
+};
+
 const setTempValues = (teaState) =>
 {
     document.getElementById('temperature').innerText = formatFloat(teaState.temperature);
     document.getElementById('targetTemperature').innerText = formatFloat(teaState.targetTemperature);
-    document.getElementById('temperatureBar').style.width = formatFloat(teaState.temperature) + '%';
-    document.getElementById('targetTemperatureBar').style.width = formatFloat(teaState.targetTemperature) + '%';
+
+    document.getElementById('temperatureBar').style.width = formatFloat(temperatureToBarLength(teaState.temperature)) + '%';
+    document.getElementById('targetTemperatureBar').style.width = formatFloat(temperatureToBarLength(teaState.targetTemperature)) + '%';
 };
 
 const setTargetTemperatureControls = (isDecreaseOn, isIncreaseOn) =>
@@ -180,7 +196,7 @@ const openModal = (type, title, desc) =>
     document.getElementById(type + "ModalTitle").innerText = title;
     document.getElementById(type + "ModalDesc").innerText = desc;
 
-}
+};
 
 const closeModal = (type) =>
 {
@@ -188,12 +204,84 @@ const closeModal = (type) =>
     HSOverlay.close(document.getElementById(ModalId));
     document.getElementById(type + "ModalTitle").innerText = "";
     document.getElementById(type + "ModalDesc").innerText = "";
-}
+};
+
+/**
+ * Utilities to manipulate ChartJS data and labels
+ */
+class ChartUtils
+{
+    addData = (chart, label, temperature, targetTemperature) =>
+    {
+        chart.data.labels.push(label);
+
+        chart.data.datasets[0].data.push(temperature);
+        chart.data.datasets[1].data.push(targetTemperature);
+
+        chart.update();
+    }
+
+    removeLastData = (chart) =>
+    {
+        chart.data.labels.pop();
+        chart.data.datasets[0].data.pop();
+        chart.data.datasets[1].data.pop();
+        chart.update();
+    }
+
+    removeFirstData = (chart) =>
+    {
+        chart.data.labels.splice(0, 1);
+        chart.data.datasets[0].data.splice(0, 1);
+        chart.data.datasets[1].data.splice(0, 1);
+        chart.update();
+    }
+};
 
 class TtcUi
 {
     constructor()
     {
+        this.chartUtil = new ChartUtils();
+        this.temperatureChart = new Chart(document.getElementById('temperatureChart'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Temperature',
+                        data: [],
+                        borderWidth: 3,
+                        borderColor: '#fde047', // yellow-300
+                        backgroundColor: '#fef08a', //  yellow-200
+                        tension: 0.4,
+                    },
+                    {
+                        label: 'Target temperature',
+                        data: [],
+                        borderWidth: 3,
+                        borderColor: '#36A2EB',
+                        backgroundColor: '#9BD0F5',
+                        tension: 0.4,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Celsius ℃'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                    }
+                }
+            }
+        });
+
         this.setTempValues = setTempValues;
         this.setModeValues = setModeValues;
         this.setRelayValues = setRelayValues;
@@ -207,8 +295,17 @@ class TtcUi
 
         this.openModal = openModal;
         this.closeModal = closeModal;
-
     }
+
+    addDataToTemperatureChart = (temperature, targetTemperature) =>
+    {
+        if (this.temperatureChart.data.datasets[0].data.length >= 15)
+        {
+            this.chartUtil.removeFirstData(this.temperatureChart);
+        }
+        this.chartUtil.addData(this.temperatureChart, new Date().toTimeString().substring(0, 8), temperature, targetTemperature);
+    }
+
 }
 
 export {TtcUi};
