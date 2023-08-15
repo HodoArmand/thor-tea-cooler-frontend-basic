@@ -34,6 +34,7 @@ class TtcApiInterface
 
         if (storedTtcIp !== "unset")
         {
+            axios.defaults.timeout = 5000;
             axios.defaults.baseURL = "http://" + this.ttcIp;
             axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
             axios.defaults.headers.common['Accept'] = 'application/json';
@@ -93,7 +94,7 @@ class TtcApiInterface
                 {
                     console.log("-1- getHardwareState error: " + error.state + error.msg);
                 });
-        }
+        };
     }
 }
 

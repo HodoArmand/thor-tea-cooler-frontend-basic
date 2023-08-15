@@ -128,7 +128,11 @@ html, body {
 }
 
 .card-button-left {
-    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800 ;
+    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
+}
+
+.card-button-full {
+    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-b-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
 }
 
 .button-group-left {
@@ -143,4 +147,23 @@ html, body {
     .control-disabled {
         @apply disabled:saturate-0 disabled:opacity-30 disabled:cursor-not-allowed;
     }
+}
+
+.button-set-temp {
+    @apply py-4 px-4 flex flex-row justify-center items-center gap-2 -ml-px rounded-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
+}
+
+.target-temp-slider
+{
+    @apply w-full h-7 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-blue-300 to-red-500;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    @apply appearance-none w-14 h-9 rounded-lg border-2 border-solid bg-white dark:bg-gray-800 border-gray-700/30 dark:border-gray-700;
+}
+
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    @apply appearance-none w-14 h-9 rounded-lg border-2 border-solid bg-white dark:bg-gray-800 border-gray-700/30 dark:border-gray-700;
 }

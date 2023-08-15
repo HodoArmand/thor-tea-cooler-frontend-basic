@@ -4,6 +4,7 @@ export const responseToTtcApiResponse = (response) =>
         statusCode: response.status,
         status: response.data.status,
         msg: response.data.msg,
+        fieldErrors: response.data.fieldErrors
     };
 };
 
@@ -13,6 +14,7 @@ export const responseToTtcApiResponseComplexMsg = (response) =>
         statusCode: response.status,
         status: response.data.status,
         msg: JSON.parse(response.data.msg),
+        fieldErrors: response.data.fieldErrors
     };
 };
 
@@ -22,6 +24,7 @@ export const errorResponseToTtcApiResponse = (error) =>
         statusCode: error.response.status,
         status: error.response.data.status,
         msg: error.response.data.msg,
+        fieldErrors: error.response.data.fieldErrors
     };
 };
 

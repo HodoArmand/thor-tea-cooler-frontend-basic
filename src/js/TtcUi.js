@@ -1,6 +1,37 @@
 import {formatFloat, capitalizeFirstLetter, enableById, disableById} from "/js/TtcClientUtilities.js";
 import {TeaState} from "/js/TtcState.js";
 
+const toggleButtonLoading = (buttonId) =>
+{
+    let button = document.getElementById(buttonId);
+    let buttonLoader = document.getElementById(buttonId + "Loader");
+
+    button.classList.toggle("!hidden");
+    buttonLoader.classList.toggle("!hidden");
+
+};
+
+const toggleManualSwitchButtonsLoading = (relayNumber) =>
+{
+    relayNumber === 1 ? toggleButtonLoading("manualSwitchRelay1Button") : relayNumber === 2 ? toggleButtonLoading("manualSwitchRelay2Button"): this.ui.openModal('Info','bad relay #', 'The entered relayNumber is invalid. There are only two active cooling fan relays, #1 and #2.');
+};
+
+const toggleTargetTempButtonsLoading = () =>
+{
+    toggleButtonLoading("targetTemperatureDecreaseButton");
+    toggleButtonLoading("targetTemperatureIncreaseButton");
+    toggleButtonLoading("setTargetTemperatureRangeSliderButton");
+};
+
+const toggleModeButtonsLoading = () =>
+{
+    toggleButtonLoading("modeButtonAuto");
+    toggleButtonLoading("modeButtonManual");
+    toggleButtonLoading("modeAutoStart");
+    toggleButtonLoading("modeAutoStop");
+
+};
+
 const setTempValues = (teaState) =>
 {
     document.getElementById('temperature').innerText = formatFloat(teaState.temperature);
@@ -8,6 +39,17 @@ const setTempValues = (teaState) =>
     document.getElementById('temperatureBar').style.width = formatFloat(teaState.temperature) + '%';
     document.getElementById('targetTemperatureBar').style.width = formatFloat(teaState.targetTemperature) + '%';
 };
+
+const setTargetTemperatureControls = (isDecreaseOn, isIncreaseOn) =>
+{
+    isDecreaseOn ? enableById("targetTemperatureDecreaseButton") : disableById("targetTemperatureDecreaseButton");
+    isIncreaseOn ? enableById("targetTemperatureIncreaseButton") : disableById("targetTemperatureIncreaseButton");
+}
+
+const followTargetTemperatureSliderValue = () =>
+{
+    document.getElementById("targetTemperatureRangeButtonCelsius").innerText = document.getElementById("targetTemperatureRangeSlider").value;
+}
 
 const hideAllRelayIcons = () =>
 {
@@ -131,6 +173,23 @@ const setModeValues = (teaState) =>
 
 };
 
+const openModal = (type, title, desc) =>
+{
+    let ModalId = type + 'Modal';
+    HSOverlay.open(document.getElementById(ModalId));
+    document.getElementById(type + "ModalTitle").innerText = title;
+    document.getElementById(type + "ModalDesc").innerText = desc;
+
+}
+
+const closeModal = (type) =>
+{
+    let ModalId = type + 'Modal';
+    HSOverlay.close(document.getElementById(ModalId));
+    document.getElementById(type + "ModalTitle").innerText = "";
+    document.getElementById(type + "ModalDesc").innerText = "";
+}
+
 class TtcUi
 {
     constructor()
@@ -138,6 +197,17 @@ class TtcUi
         this.setTempValues = setTempValues;
         this.setModeValues = setModeValues;
         this.setRelayValues = setRelayValues;
+        this.setTargetTemperatureControls = setTargetTemperatureControls;
+        this.followTargetTemperatureSliderValue = followTargetTemperatureSliderValue;
+
+        this.toggleButtonLoading = toggleButtonLoading;
+        this.toggleTargetTempButtonsLoading = toggleTargetTempButtonsLoading;
+        this.toggleModeButtonsLoading = toggleModeButtonsLoading;
+        this.toggleManualSwitchButtonsLoading = toggleManualSwitchButtonsLoading;
+
+        this.openModal = openModal;
+        this.closeModal = closeModal;
+
     }
 }
 
