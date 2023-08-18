@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/*Css vars*/
 :root {
+    /*vars for woodpattern bg*/
     --red-wood-900: #7f1d1d0A;
     --orange-wood-900: #7c2d120A;
     --amber-wood-900: #78350f0A;
@@ -11,6 +13,29 @@
     --orange-wood-950: #43140708;
     --amber-wood-950: #451a0308;
     --yellow-wood-950: #42200608;
+}
+
+.woodpattern {
+
+    background-color: #e2c7ae;
+    background-size: 13px 13px, 29px 29px, 37px 37px, 53px 53px;
+    background-image: -webkit-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -webkit-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: -moz-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -moz-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: -ms-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -ms-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: -o-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -o-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -o-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -o-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+
+}
+
+:is(.dark .dark\:woodpattern-dark) {
+
+    background-color: #3a342a;
+    background-size: 13px 13px, 29px 29px, 37px 37px, 53px 53px;
+    background-image: -webkit-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -webkit-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: -moz-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -moz-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: -ms-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -ms-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: -o-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -o-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -o-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -o-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    background-image: linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
 }
 
 html, body {
@@ -45,19 +70,25 @@ html, body {
 }
 
 .nav-button {
-    @apply inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
-}
-
-.nav-items-active {
-    @apply flex flex-row space-x-2 font-semibold text-emerald-800 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-500;
+    @apply inline-flex justify-center items-center align-middle gap-2;
+    @apply text-sm font-medium text-gray-700 dark:text-gray-400 dark:hover:text-white;
+    @apply bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800;
+    @apply rounded-md shadow-sm border dark:border-gray-700;
 }
 
 .nav-items {
-    @apply flex flex-row space-x-2 font-semibold text-gray-700 hover:text-emerald-700 dark:text-gray-200 dark:hover:text-emerald-500;
+    @apply flex flex-row space-x-2;
+    @apply font-semibold text-gray-700 hover:text-emerald-700 dark:text-gray-200 dark:hover:text-emerald-500;
+}
+
+.nav-items-active {
+    @apply flex flex-row space-x-2;
+    @apply font-semibold text-emerald-800 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-500;
 }
 
 .nav-items-logout {
-    @apply flex flex-row space-x-2 font-semibold text-gray-700 hover:text-rose-700 dark:text-gray-200 dark:hover:text-rose-500;
+    @apply flex flex-row space-x-2;
+    @apply font-semibold text-gray-700 hover:text-rose-700 dark:text-gray-200 dark:hover:text-rose-500;
 }
 
 .nav-text {
@@ -88,31 +119,20 @@ html, body {
     @apply h-10 w-10;
 }
 
+.icon-3xl {
+    @apply h-12 w-12;
+}
+
+.icon-4xl {
+    @apply h-16 w-16;
+}
+
+.icon-5xl {
+    @apply h-32 w-32;
+}
+
 .mode-icon {
-    @apply w-32 h-32 text-green-800 dark:text-green-400;
-}
-
-.woodpattern {
-
-    background-color: #e2c7ae;
-    background-size: 13px 13px, 29px 29px, 37px 37px, 53px 53px;
-    background-image: -webkit-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -webkit-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: -moz-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -moz-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: -ms-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -ms-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: -o-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -o-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -o-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -o-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-
-}
-
-:is(.dark .dark\:woodpattern-dark) {
-
-    background-color: #3a342a;
-    background-size: 13px 13px, 29px 29px, 37px 37px, 53px 53px;
-    background-image: -webkit-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -webkit-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -webkit-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: -moz-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -moz-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -moz-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: -ms-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -ms-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -ms-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: -o-linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), -o-linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), -o-linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), -o-linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
-    background-image: linear-gradient(0, var(--orange-wood-900) 50%, transparent 50%), linear-gradient(0, var(--amber-wood-900) 50%, transparent 50%), linear-gradient(0, transparent 50%, var(--yellow-wood-950) 50%), linear-gradient(0, transparent 50%, var(--amber-wood-950) 50%);
+    @apply icon-5xl text-green-800 dark:text-green-400;
 }
 
 .mode-title {
@@ -123,20 +143,32 @@ html, body {
     @apply mt-3 text-gray-500 dark:text-gray-400;
 }
 
+.card-button {
+    @apply w-full inline-flex justify-center items-center align-middle;
+    @apply py-3 px-4 sm:p-4 gap-2;
+    @apply text-sm font-medium text-gray-700 hover:text-black dark:text-gray-400 dark:hover:text-white;
+    @apply bg-white dark:bg-slate-900;
+    @apply shadow-sm dark:border-gray-700;
+}
+
 .card-button-right {
-    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
+    @apply card-button rounded-br-xl;
 }
 
 .card-button-left {
-    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
+    @apply card-button rounded-bl-xl;
 }
 
 .card-button-full {
-    @apply w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-b-xl font-medium bg-white text-gray-700 shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
+    @apply card-button rounded-b-xl;
 }
 
 .button-group-left-right {
-    @apply py-4 px-4 md:px-8 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
+    @apply inline-flex justify-center items-center align-middle;
+    @apply py-4 px-4 md:px-8 gap-2 -ml-px first:ml-0;
+    @apply text-sm font-medium text-gray-700 dark:text-gray-400 dark:hover:text-white;
+    @apply bg-white dark:bg-gray-800;
+    @apply first:rounded-l-lg last:rounded-r-lg border dark:border-gray-700;
 }
 
 @layer components {
@@ -146,27 +178,49 @@ html, body {
 }
 
 .button-set-temp {
-    @apply py-4 px-4 flex flex-row justify-center items-center gap-2 -ml-px rounded-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
+    @apply flex flex-row justify-center items-center align-middle;
+    @apply py-4 px-4 gap-2 -ml-px;
+    @apply text-sm font-medium text-gray-700 dark:text-gray-400 dark:hover:text-white;
+    @apply bg-white dark:bg-gray-800;
+    @apply rounded-lg border dark:border-gray-700;
 }
 
 .target-temp-slider {
-    @apply w-4/5 sm:w-full h-7 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-blue-300 to-red-500;
+    @apply appearance-none cursor-pointer w-4/5 sm:w-full h-7;
+    @apply bg-gradient-to-r from-blue-300 to-red-500;
+    @apply rounded-lg;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    @apply appearance-none w-14 h-9 rounded-lg border-2 border-solid bg-white dark:bg-gray-800 border-gray-700/30 dark:border-gray-700;
+    @apply appearance-none w-14 h-9;
+    @apply bg-white dark:bg-gray-800;
+    @apply rounded-lg border-2 border-solid border-gray-700/30 dark:border-gray-700;
 }
 
 input[type="range"]::-moz-range-thumb {
     -webkit-appearance: none;
-    @apply appearance-none w-14 h-9 rounded-lg border-2 border-solid bg-white dark:bg-gray-800 border-gray-700/30 dark:border-gray-700;
+    @apply appearance-none w-14 h-9;
+    @apply bg-white dark:bg-gray-800;
+    @apply rounded-lg border-2 border-solid border-gray-700/30 dark:border-gray-700;
 }
 
-.textinput {
-    @apply h-12 border border-gray-200 rounded-md text-sm bg-emerald-50 dark:bg-emerald-700/60 dark:border-gray-700 dark:text-gray-200;
+.text-input {
+    @apply h-12 text-sm dark:text-gray-200;
+    @apply bg-emerald-50 dark:bg-emerald-700/60;
+    /*Autofill Background, but base tailwind utilities doesn't work, this inset shadow magic does the trick.*/
+    /*light:bg-emerald-50 dark:bg-emerald-700 -ish colors used*/
+    @apply autofill:shadow-[inset_0_0_0px_1000px_#ecfdf5] autofill:dark:shadow-[inset_0_0_0px_1000px_#047857FF];
+    @apply autofill:text-black autofill:dark:text-gray-200;
+    @apply rounded-md border border-gray-200 dark:border-gray-700;
 }
 
 .input-label-top {
-    @apply text-sm mb-2 text-gray-900 dark:text-gray-50;
+    @apply mb-2 text-sm text-gray-900 dark:text-gray-50;
+}
+
+.login-body {
+    @apply flex flex-row items-center min-h-screen w-full;
+    @apply m-0 p-0;
+    @apply bg-green-50 dark:bg-green-900 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
 }

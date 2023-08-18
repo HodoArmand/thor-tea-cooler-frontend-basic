@@ -13,7 +13,7 @@
     <script type="module" src="/js/ttcClient.js"></script>
 
 </head>
-<body class="flex flex-row items-center min-h-screen w-full bg-green-50 m-0 p-0 bg-green-gradient-animated dark:bg-green-gradient-animated-dark">
+<body class="login-body">
 <main class="h-full w-full p-6 flex flex-row items-center">
     <div id="loginCard"
          class="w-full sm:w-7/12 md:w-6/12 lg:w-5/12 xl:w-3/12 mx-auto mt-7 bg-white border border-gray-200 rounded-xl shadow-lg dark:shadow-slate-700/70 dark:bg-gray-800 dark:border-gray-700">
@@ -38,7 +38,7 @@
                         <label for="ttcIp" class="block input-label-top">TTC Address</label>
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <input type="text" id="ttcIp" name="ttcIp" oninput="onIpInput()"
-                                   class="py-3 px-4 block w-full sm:w-4/6 textinput"
+                                   class="py-3 px-4 block w-full sm:w-4/6 text-input"
                             >
                             <button id="ttcIpTestButton" type="button" onclick="ttcClient.isTtcTest()"
                                     class="w-full h-12 sm:w-2/6 rounded-lg py-3 px-4 my-2 sm:mx-2 inline-flex justify-center items-center gap-2 rounded-md border-2 border-green-600 dark:border dark:border-gray-300/25 font-semibold bg-white dark:bg-gray-500/25 text-green-800 dark:text-white hover:bg-green-600 hover:text-white dark:hover:text-white dark:hover:bg-green-600">
@@ -55,7 +55,7 @@
                     <div>
                         <label for="name" class="block input-label-top">Username</label>
                         <input type="text" id="name" name="name" minlength="3" maxlength="32"
-                               class="py-3 px-4 block w-full textinput"
+                               class="py-3 px-4 block w-full text-input"
                         >
                     </div>
                     <div>
@@ -63,7 +63,7 @@
                             <label for="password" class="block input-label-top">Password</label>
                         </div>
                         <input type="password" id="password" name="password" minlength="8" maxlength="32"
-                               class="py-3 px-4 block w-full textinput"
+                               class="py-3 px-4 block w-full text-input"
                         >
                     </div>
                     <button id="loginButton" type="button" onclick="ttcClient.login()" disabled
