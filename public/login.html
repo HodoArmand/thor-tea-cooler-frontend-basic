@@ -15,69 +15,60 @@
 </head>
 <body class="login-body">
 <main class="h-full w-full p-6 flex flex-row items-center">
-    <div id="loginCard"
-         class="w-full sm:w-7/12 md:w-6/12 lg:w-5/12 xl:w-3/12 mx-auto mt-7 bg-white border border-gray-200 rounded-xl shadow-lg dark:shadow-slate-700/70 dark:bg-gray-800 dark:border-gray-700">
-        <div class="relative flex flex-col items-center p-4 sm:p-7">
-            <div class="absolute top-5 right-5 sm:right-7 sm:top-7">
-                <a class="hs-dark-mode-active:hidden flex hs-dark-mode nav-text flex-row space-x-2"
-                   href="#!" data-hs-theme-click-value="dark">
-                    <img src="img/moon.svg" class="injectable icon-lg text-emerald-700 dark:text-emerald-600 hover:text-green-500 dark:hover:text-green-400">
-                </a>
-                <a class="hs-dark-mode-active:flex hidden hs-dark-mode nav-text flex-row space-x-2"
-                   href="" data-hs-theme-click-value="light">
-                    <img src="img/sun.svg" class="injectable icon-lg text-emerald-700 dark:text-emerald-600 hover:text-green-500 dark:hover:text-green-400">
-                </a>
-            </div>
-            <img src="/img/TTC_logo.svg" class="injectable mb-2 w-28 h-28 opacity-100 dark:opacity-80">
-            <div class="text-center">
-                <h1 class="block text-2xl font-bold text-green-800 dark:text-gray-50">Login</h1>
-            </div>
-            <form class="block mt-5 w-full">
-                <div class="grid gap-y-4">
-                    <div class="flex flex-col">
-                        <label for="ttcIp" class="block input-label-top">TTC Address</label>
-                        <div class="flex flex-col sm:flex-row sm:items-center">
-                            <input type="text" id="ttcIp" name="ttcIp" oninput="onIpInput()"
-                                   class="py-3 px-4 block w-full sm:w-4/6 text-input"
-                            >
-                            <button id="ttcIpTestButton" type="button" onclick="ttcClient.isTtcTest()"
-                                    class="w-full h-12 sm:w-2/6 rounded-lg py-3 px-4 my-2 sm:mx-2 inline-flex justify-center items-center gap-2 rounded-md border-2 border-green-600 dark:border dark:border-gray-300/25 font-semibold bg-white dark:bg-gray-500/25 text-green-800 dark:text-white hover:bg-green-600 hover:text-white dark:hover:text-white dark:hover:bg-green-600">
-                                <span>Test</span>
-                                <img id="ttcIpOk" src="img/check.svg" class="!hidden injectable ml-1 icon-md text-emerald-700 dark:text-emerald-600">
-                                <img id="ttcIpNotOk" src="img/nav-menu-opened.svg" class="!hidden injectable ml-1 icon-md text-rose-700 dark:text-rose-600">
-                            </button>
-                            <button id="ttcIpTestButtonLoader" type="button" onclick=""
-                                    class="!hidden w-full h-12 sm:w-2/6 rounded-lg py-3 px-4 my-2 sm:mx-2 inline-flex justify-center items-center gap-2 rounded-md border-2 border-green-600 dark:border dark:border-gray-300/25 font-semibold bg-white dark:bg-gray-500/25 text-green-800 dark:text-white hover:bg-green-600 hover:text-white dark:hover:text-white dark:hover:bg-green-600">
-                                <img src="img/loader.svg" class="injectable icon-md animate-spin text-green-600 dark:text-green-500">
-                            </button>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="name" class="block input-label-top">Username</label>
-                        <input type="text" id="name" name="name" minlength="3" maxlength="32"
-                               class="py-3 px-4 block w-full text-input"
-                        >
-                    </div>
-                    <div>
-                        <div class="flex justify-between items-center">
-                            <label for="password" class="block input-label-top">Password</label>
-                        </div>
-                        <input type="password" id="password" name="password" minlength="8" maxlength="32"
-                               class="py-3 px-4 block w-full text-input"
-                        >
-                    </div>
-                    <button id="loginButton" type="button" onclick="ttcClient.login()" disabled
-                            class="disabled:control-disabled py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-green-600 dark:border dark:border-gray-300/25 font-semibold bg-white dark:bg-gray-500/25 text-green-800 dark:text-white hover:bg-green-600 hover:text-white dark:hover:text-white dark:hover:bg-green-600">
-                        Login
+    <div id="loginCard" class="loginCard relative">
+        <div id="darkModeSwitchControls" class="absolute top-5 right-5 sm:right-7 sm:top-7">
+            <a class="hs-dark-mode-active:hidden flex hs-dark-mode nav-text flex-row space-x-2"
+               href="#!" data-hs-theme-click-value="dark">
+                <img src="img/moon.svg" class="injectable icon-lg text-emerald-700 dark:text-emerald-600 hover:text-green-500 dark:hover:text-green-400">
+            </a>
+            <a class="hs-dark-mode-active:flex hidden hs-dark-mode nav-text flex-row space-x-2"
+               href="" data-hs-theme-click-value="light">
+                <img src="img/sun.svg" class="injectable icon-lg text-emerald-700 dark:text-emerald-600 hover:text-green-500 dark:hover:text-green-400">
+            </a>
+        </div>
+        <img id="loginCardLogo" src="/img/TTC_logo.svg" class="injectable icon-5xl mb-2 opacity-100 dark:opacity-80" alt="TTC">
+        <div id="loginCardTitle" class="text-center">
+            <h1 class="block text-2xl font-bold text-green-800 dark:text-gray-50">Login</h1>
+        </div>
+        <form id="loginCardForm" class="block mt-5 w-full grid gap-y-4">
+            <div id="input-group-ip" class="flex flex-col">
+                <label for="ttcIp" class="block input-label-top">TTC Address</label>
+                <div class="flex flex-col sm:flex-row sm:items-center">
+                    <input type="text" id="ttcIp" name="ttcIp" oninput="onIpInput()"
+                           class="py-3 px-4 block w-full sm:w-4/6 text-input"
+                    >
+                    <button id="ttcIpTestButton" type="button" onclick="ttcClient.isTtcTest()"
+                            class="button-ttcIp-test">
+                        <span>Test</span>
+                        <img id="ttcIpOk" src="img/check.svg" class="!hidden injectable ml-1 icon-md text-emerald-700 dark:text-emerald-600" alt="OK">
+                        <img id="ttcIpNotOk" src="img/nav-menu-opened.svg" class="!hidden injectable ml-1 icon-md text-rose-700 dark:text-rose-600" alt="X">
                     </button>
-                    <button id="loginButtonLoader" type="button" onclick=""
-                            class="!hidden py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-green-600 dark:border dark:border-gray-300/25 font-semibold bg-white dark:bg-gray-500/25 text-green-800 dark:text-white hover:bg-green-600 hover:text-white dark:hover:text-white dark:hover:bg-green-600">
-                        <img src="img/loader.svg" class="injectable icon-md animate-spin text-green-600 dark:text-green-500">
+                    <button id="ttcIpTestButtonLoader" type="button" onclick=""
+                            class="!hidden button-ttcIp-test">
+                        <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
                     </button>
                 </div>
-            </form>
-            <!-- End Form -->
-        </div>
+            </div>
+            <div id="input-group-name">
+                <label for="name" class="block input-label-top">Username</label>
+                <input type="text" id="name" name="name" minlength="3" maxlength="32"
+                       class="py-3 px-4 block w-full text-input">
+            </div>
+            <div id="input-group-password">
+                <div class="flex justify-between items-center">
+                    <label for="password" class="block input-label-top">Password</label>
+                </div>
+                <input type="password" id="password" name="password" minlength="8" maxlength="32"
+                       class="py-3 px-4 block w-full text-input">
+            </div>
+            <button id="loginButton" type="button" onclick="ttcClient.login()" disabled class="button-login disabled:control-disabled">
+                Login
+            </button>
+            <button id="loginButtonLoader" type="button" onclick=""
+                    class="!hidden button-login">
+                <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
+            </button>
+        </form>
     </div>
 </main>
 
@@ -87,7 +78,7 @@
         <div class="max-h-full w-full overflow-hidden flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/70">
             <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
                 <div class="flex inline-flex space-x-2 text-gray-800 dark:text-white">
-                    <img src="img/info-square.svg" class="injectable inline icon-md">
+                    <img src="img/info-square.svg" class="injectable inline icon-md" alt="Info">
                     <h3 id="infoModalTitle" class="font-bold">
                         Modal title
                     </h3>

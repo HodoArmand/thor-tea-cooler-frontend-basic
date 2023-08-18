@@ -128,11 +128,15 @@ html, body {
 }
 
 .icon-5xl {
+    @apply w-28 h-28;
+}
+
+.icon-6xl {
     @apply h-32 w-32;
 }
 
 .mode-icon {
-    @apply icon-5xl text-green-800 dark:text-green-400;
+    @apply icon-6xl text-green-800 dark:text-green-400;
 }
 
 .mode-title {
@@ -223,4 +227,32 @@ input[type="range"]::-moz-range-thumb {
     @apply flex flex-row items-center min-h-screen w-full;
     @apply m-0 p-0;
     @apply bg-green-50 dark:bg-green-900 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
+}
+
+.loginCard {
+    @apply w-full sm:w-7/12 md:w-6/12 lg:w-5/12 xl:w-3/12;
+    @apply flex flex-col items-center mx-auto mt-7 p-4 sm:p-7;
+    @apply bg-white dark:bg-gray-800;
+    @apply rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 dark:shadow-slate-700/70;
+}
+
+.button-ttcIp-test {
+    @apply w-full h-12 sm:w-2/6 inline-flex justify-center items-center;
+    @apply py-3 px-4 my-2 sm:mx-2 gap-2;
+    @apply font-semibold text-green-800 dark:text-white hover:text-white dark:hover:text-white;
+    @apply bg-white dark:bg-gray-500/25 hover:bg-green-600;
+    @apply rounded-lg border-2 border-green-600 dark:border dark:border-gray-300/25 dark:hover:bg-green-600;
+}
+
+.button-login {
+    @apply inline-flex justify-center items-center;
+    @apply py-3 px-4 gap-2;
+    @apply font-semibold text-green-800 dark:text-white hover:text-white;
+    @apply bg-white dark:bg-gray-500/25 hover:bg-green-600 dark:hover:bg-green-600;
+    @apply rounded-md border-2 border-green-600 dark:border dark:border-gray-300/25;
+}
+
+.icon-loader
+{
+    @apply icon-md animate-spin text-green-600 dark:text-green-500;
 }
