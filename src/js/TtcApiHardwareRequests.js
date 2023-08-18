@@ -17,7 +17,7 @@ const switchRelay = (relayNumber) =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const getHardwareState = () =>
 {
@@ -31,7 +31,7 @@ const getHardwareState = () =>
             return responseToTtcApiResponseComplexMsg(error);
         });
 
-}
+};
 
 const setRelays = (relay1_, relay2_) =>
 {
@@ -51,7 +51,7 @@ const setRelays = (relay1_, relay2_) =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const setModeManual = () =>
 {
@@ -65,7 +65,7 @@ const setModeManual = () =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const setTargetTemperature = (targetTemperature_) =>
 {
@@ -84,7 +84,7 @@ const setTargetTemperature = (targetTemperature_) =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const setModeAuto = () =>
 {
@@ -98,7 +98,7 @@ const setModeAuto = () =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const startAutoCooling = () =>
 {
@@ -112,7 +112,7 @@ const startAutoCooling = () =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const stopAutoCooling = () =>
 {
@@ -126,7 +126,7 @@ const stopAutoCooling = () =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const restartMcu = () =>
 {
@@ -140,7 +140,7 @@ const restartMcu = () =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 const isTtc = () =>
 {
@@ -154,7 +154,7 @@ const isTtc = () =>
             return errorResponseToTtcApiResponse(error);
         });
 
-}
+};
 
 
 class TtcApiHardwareRequests

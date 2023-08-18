@@ -1,6 +1,6 @@
 import {TtcApiInterface} from "/js/TtcApiInterface.js";
 import {TtcUi} from "/js/TtcUi.js";
-import {formatFloat} from "/js/TtcClientUtilities.js";
+import {formatFloat, enableById, disableById} from "/js/TtcClientUtilities.js";
 
 class TtcClient
 {
@@ -30,12 +30,16 @@ class TtcClient
     {
         this._api = new TtcApiInterface();
         this._ui = new TtcUi();
-        this.sse = new EventSource('//' + this.api.ttcIp + '/events');
-        this.initSSEventlisteners = initSSEventlisteners;
 
-        this.initSSEventlisteners(this.sse);
+        if (window.location.href.indexOf("login") === -1 && window.location.href.indexOf("configuration") === -1)
+        {
+            this.sse = new EventSource('//' + this.api.ttcIp + '/events');
+            this.initSSEventlisteners = initSSEventlisteners;
 
-        this.setTeaStateValues();
+            this.initSSEventlisteners(this.sse);
+
+            this.setTeaStateValues();
+        }
     }
 
     setTeaStateValues = () =>
@@ -290,6 +294,111 @@ class TtcClient
             });
     };
 
+    login = () =>
+    {
+        this.ui.toggleButtonLoading("loginButton");
+
+        let name = document.getElementById("name").value;
+        let password = document.getElementById("password").value;
+
+        this.api.auth.login(name, password)
+            .then(result =>
+            {
+                let fieldErrors = result.fieldErrors ? result.fieldErrors.join('\n') : 'none';
+                if (result.statusCode === 201 && result.status === "ok")
+                {
+                    this.api.auth.userName = name;
+                    this.api.auth.apiKey = result.msg;
+                    window.location.replace("/");
+                }
+                else
+                {
+                    console.log("-1- login: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- login error: " + error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+            })
+            .finally(() =>
+            {
+                this.ui.toggleButtonLoading("loginButton");
+            });
+    };
+
+    logout = () =>
+    {
+        this.api.auth.logout()
+            .then(result =>
+            {
+                let fieldErrors = result.fieldErrors ? result.fieldErrors.join('\n') : 'none';
+                if (result.statusCode === 201 && result.status === "ok")
+                {
+                    this.api.auth.userName = 'unset';
+                    this.api.auth.apiKey = 'unset';
+                    window.location.replace('/login');
+                }
+                else
+                {
+                    console.log("-1- logout: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- logout error: " + error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+            });
+    };
+
+    isTtcTest = () =>
+    {
+        this.ui.toggleButtonLoading("ttcIpTestButton");
+
+        let address = document.getElementById("ttcIp").value;
+
+        axios.defaults.baseURL = "http://" + address;
+
+        document.getElementById("ttcIpOk").classList.add("!hidden");
+        document.getElementById("ttcIpNotOk").classList.add("!hidden");
+
+        this.api.hwRequests.isTtc()
+            .then(result =>
+            {
+                let fieldErrors = result.fieldErrors ? result.fieldErrors.join('\n') : 'none';
+                if (result.statusCode === 200 && result.status === "yes")
+                {
+                    this.api.ttcIp = address;
+                    document.getElementById("ttcIpOk").classList.remove("!hidden");
+                    enableById("loginButton");
+                }
+                else
+                {
+                    console.log("-1- isTtc: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', 'Error - Not a TTC Device', 'No TTC Device was found at the given address.');
+
+                    document.getElementById("ttcIpNotOk").classList.remove("!hidden");
+                    disableById("loginButton");
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- isTtc error: " + error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error - Not a TTC Device or System error.', 'No TTC Device was found at the given address or there was a system error when making the request.');
+
+                document.getElementById("ttcIpNotOk").classList.remove("!hidden");
+                disableById("loginButton");
+            })
+            .finally(() =>
+            {
+                this.ui.toggleButtonLoading("ttcIpTestButton");
+            });
+    };
 
 }
 

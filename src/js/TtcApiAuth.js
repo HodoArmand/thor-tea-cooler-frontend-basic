@@ -1,3 +1,37 @@
+import {responseToTtcApiResponse, responseToTtcApiResponseComplexMsg, errorResponseToTtcApiResponse} from "/js/TtcClientUtilities.js";
+
+const login = (name_, password_) =>
+{
+
+    let requestData = new URLSearchParams({
+        name: name_,
+        password: password_,
+    });
+
+    return axios.post('login', requestData)
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            return errorResponseToTtcApiResponse(error);
+        });
+};
+
+const logout = () =>
+{
+    return axios.post('logout')
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            return errorResponseToTtcApiResponse(error);
+        });
+};
+
 class TtcApiAuth
 {
     get userName()
@@ -29,6 +63,9 @@ class TtcApiAuth
 
         let storedUserName = localStorage.getItem("ttcUserName");
         this._userName = storedUserName ? storedUserName : "unset";
+
+        this.login = login;
+        this.logout = logout;
     }
 }
 

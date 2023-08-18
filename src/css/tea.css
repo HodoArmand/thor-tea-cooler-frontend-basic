@@ -149,8 +149,7 @@ html, body {
     @apply py-4 px-4 flex flex-row justify-center items-center gap-2 -ml-px rounded-lg border font-medium bg-white text-gray-700 align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white;
 }
 
-.target-temp-slider
-{
+.target-temp-slider {
     @apply w-4/5 sm:w-full h-7 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-blue-300 to-red-500;
 }
 
@@ -162,4 +161,12 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
     -webkit-appearance: none;
     @apply appearance-none w-14 h-9 rounded-lg border-2 border-solid bg-white dark:bg-gray-800 border-gray-700/30 dark:border-gray-700;
+}
+
+.textinput {
+    @apply h-12 border border-gray-200 rounded-md text-sm bg-emerald-50 dark:bg-emerald-700/60 dark:border-gray-700 dark:text-gray-200;
+}
+
+.input-label-top {
+    @apply text-sm mb-2 text-gray-900 dark:text-gray-50;
 }

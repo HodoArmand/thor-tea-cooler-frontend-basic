@@ -242,56 +242,60 @@ class TtcUi
 {
     constructor()
     {
-        this.chartUtil = new ChartUtils();
-        this.temperatureChart = new Chart(document.getElementById('temperatureChart'), {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [
-                    {
-                        label: 'Temperature',
-                        data: [],
-                        borderWidth: 3,
-                        borderColor: '#fde047', // yellow-300
-                        backgroundColor: '#fef08a', //  yellow-200
-                        tension: 0.4,
-                    },
-                    {
-                        label: 'Target temperature',
-                        data: [],
-                        borderWidth: 3,
-                        borderColor: '#36A2EB',
-                        backgroundColor: '#9BD0F5',
-                        tension: 0.4,
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Celsius ℃'
+        if (window.location.href.indexOf("login") === -1 && window.location.href.indexOf("configuration") === -1)
+        {
+            this.chartUtil = new ChartUtils();
+            this.temperatureChart = new Chart(document.getElementById('temperatureChart'), {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Temperature',
+                            data: [],
+                            borderWidth: 3,
+                            borderColor: '#fde047', // yellow-300
+                            backgroundColor: '#fef08a', //  yellow-200
+                            tension: 0.4,
                         },
-                        suggestedMin: 0,
-                        suggestedMax: 100,
+                        {
+                            label: 'Target temperature',
+                            data: [],
+                            borderWidth: 3,
+                            borderColor: '#36A2EB',
+                            backgroundColor: '#9BD0F5',
+                            tension: 0.4,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Celsius ℃'
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        this.setTempValues = setTempValues;
-        this.setModeValues = setModeValues;
-        this.setRelayValues = setRelayValues;
-        this.setTargetTemperatureControls = setTargetTemperatureControls;
-        this.followTargetTemperatureSliderValue = followTargetTemperatureSliderValue;
+            this.setTempValues = setTempValues;
+            this.setModeValues = setModeValues;
+            this.setRelayValues = setRelayValues;
+            this.setTargetTemperatureControls = setTargetTemperatureControls;
+            this.followTargetTemperatureSliderValue = followTargetTemperatureSliderValue;
+
+            this.toggleTargetTempButtonsLoading = toggleTargetTempButtonsLoading;
+            this.toggleModeButtonsLoading = toggleModeButtonsLoading;
+            this.toggleManualSwitchButtonsLoading = toggleManualSwitchButtonsLoading;
+        }
 
         this.toggleButtonLoading = toggleButtonLoading;
-        this.toggleTargetTempButtonsLoading = toggleTargetTempButtonsLoading;
-        this.toggleModeButtonsLoading = toggleModeButtonsLoading;
-        this.toggleManualSwitchButtonsLoading = toggleManualSwitchButtonsLoading;
 
         this.openModal = openModal;
         this.closeModal = closeModal;

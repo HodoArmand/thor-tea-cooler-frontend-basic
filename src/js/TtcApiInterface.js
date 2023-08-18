@@ -30,14 +30,13 @@ class TtcApiInterface
         this.auth = new TtcApiAuth();
         this.hwRequests = new TtcApiHardwareRequests();
 
-        //TODO: SSE
+        axios.defaults.timeout = 5000;
+        axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
+        axios.defaults.headers.common['Accept'] = 'application/json';
 
-        if (storedTtcIp !== "unset")
+        if (storedTtcIp !== "unset" && this.auth.apiKey !== "unset" && (window.location.href.indexOf("login") === -1 && window.location.href.indexOf("configuration") === -1))
         {
-            axios.defaults.timeout = 5000;
             axios.defaults.baseURL = "http://" + this.ttcIp;
-            axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
-            axios.defaults.headers.common['Accept'] = 'application/json';
             axios.defaults.headers.common['Authorization'] = "Bearer " + this.auth.apiKey;
 
             this.hwRequests.isTtc()
