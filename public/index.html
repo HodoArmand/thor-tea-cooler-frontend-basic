@@ -14,21 +14,20 @@
     <script type="module" src="/js/ttcClient.js"></script>
 
 </head>
-<body class="flex flex-col min-h-screen w-full bg-green-50 m-0 p-0 bg-green-gradient-animated dark:bg-green-gradient-animated-dark">
-<header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-40 w-full woodpattern dark:woodpattern-dark text-base py-4 border-b border-green-600/50 dark:border-green-800/50">
+<body class="index-body">
+<header class="app-header">
     <nav class="w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
         <div class="flex items-center justify-between">
             <a class="flex flex-row items-center gap-x-2 text-xl font-semibold text-emerald-800 dark:text-green-50" href="/">
-                <img src="/img/TTC_logo.svg" class="w-10 h-10">
+                <img src="/img/TTC_logo.svg" class="icon-2xl">
                 <h1 class="hidden md:inline w-64 italic">Thor Tea Cooler</h1>
                 <h1 class="inline md:hidden w-32 italic">TTC</h1>
             </a>
-            <div class="sm:hidden">
-                <button type="button"
-                        class="hs-collapse-toggle p-2 nav-button"
+            <div id="mobileNavBarMenuToggleButton" class="sm:hidden">
+                <button type="button" class="hs-collapse-toggle p-2 nav-button"
                         data-hs-collapse="#navbar-image-and-text-1" aria-controls="navbar-image-and-text-1" aria-label="Toggle navigation">
-                    <img class="hs-collapse-open:hidden w-6 h-6 injectable" src="img/nav-menu-bars.svg">
-                    <img class="hs-collapse-open:block hidden w-6 h-6 injectable" src="img/nav-menu-opened.svg">
+                    <img class="hs-collapse-open:hidden icon-md injectable" src="img/nav-menu-bars.svg" alt="≡">
+                    <img class="hs-collapse-open:block hidden icon-md injectable" src="img/nav-menu-opened.svg" alt="X">
                 </button>
             </div>
         </div>
@@ -58,13 +57,11 @@
                 </a>
             </div>
         </div>
-
     </nav>
 </header>
 <main class="h-fit w-full">
     <div id="hardwareCards" class="w-full py-10 px-2 md:px-4 lg:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div id="temperaturesCard"
-             class="group flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+        <div id="temperaturesCard" class="teaControlGroupCard">
             <div id="temperaturesCardHeader" class="flex flex-row relative h-56 w-full bg-gray-50 dark:bg-slate-950 rounded-t-xl p-2">
                 <canvas id="temperatureChart"></canvas>
             </div>
@@ -113,7 +110,7 @@
                     </button>
                 </div>
             </div>
-            <div id="temperaturesCardFooter" class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
+            <div id="temperaturesCardFooter" class="teaControlGroupCardFooter">
                 <button id="targetTemperatureDecreaseButton" class="card-button-left hover:bg-sky-200 dark:hover:bg-sky-500/75 disabled:control-disabled"
                         onclick="ttcClient.targetTemperatureDecrease()">
                     <span><img src="img/mug.svg" class="injectable icon-md inline mr-1">-1℃</span>
@@ -130,7 +127,7 @@
                 </button>
             </div>
         </div>
-        <div id="opModesCard" class="group flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+        <div id="opModesCard" class="teaControlGroupCard">
             <div id="opModesCardHeader" class="h-56 flex-none flex flex-col justify-center items-center bg-gray-50 dark:bg-slate-950 rounded-t-xl">
                 <img id="modeIconManual" src="img/modes/manual.svg" class="injectable mode-icon">
                 <img id="modeIconAutoReady" src="img/modes/autoReady.svg" class="injectable mode-icon hidden">
@@ -192,7 +189,7 @@
                     </div>
                 </div>
             </div>
-            <div id="opModesCardFooter" class="flex-none mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
+            <div id="opModesCardFooter" class="flex-none teaControlGroupCardFooter">
                 <button id="modeButtonAuto" class="card-button-left hover:bg-green-200 dark:hover:bg-green-500/75 disabled:control-disabled"
                         onclick="ttcClient.setModeAutoReady()">
                     <span><img src="img/modes/autoReady.svg" class="injectable icon-md inline mr-1">Automatic</span>
@@ -209,13 +206,12 @@
                 </button>
             </div>
         </div>
-        <div id="manualModeCard"
-             class="group flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+        <div id="manualModeCard" class="teaControlGroupCard">
             <div id="manualModeCardHeader" class="h-56 flex-none flex flex-row justify-center items-center bg-gray-50 dark:bg-slate-950 rounded-t-xl">
-                <img id="relayStateIcon1On" src="img/propeller.svg" class="injectable w-32 h-32 text-green-800 dark:text-green-400">
-                <img id="relayStateIcon1Off" src="img/propeller_off.svg" class="injectable w-32 h-32 text-gray-700 dark:text-gray-400 hidden">
-                <img id="relayStateIcon2On" src="img/propeller.svg" class="injectable w-32 h-32 text-green-800 dark:text-green-400 hidden">
-                <img id="relayStateIcon2Off" src="img/propeller_off.svg" class="injectable w-32 h-32 text-gray-700 dark:text-gray-400">
+                <img id="relayStateIcon1On" src="img/propeller.svg" class="injectable icon-6xl text-green-800 dark:text-green-400">
+                <img id="relayStateIcon1Off" src="img/propeller_off.svg" class="injectable icon-6xl text-gray-700 dark:text-gray-400 hidden">
+                <img id="relayStateIcon2On" src="img/propeller.svg" class="injectable icon-6xl text-green-800 dark:text-green-400 hidden">
+                <img id="relayStateIcon2Off" src="img/propeller_off.svg" class="injectable icon-6xl text-gray-700 dark:text-gray-400">
             </div>
             <div id="manualModeCardMain" class="flex-auto flex flex-col justify-between p-4 md:p-6 space-y-2">
                 <h2 class="mb-1 text-base font-semibold uppercase text-green-600 dark:text-green-500">
@@ -241,7 +237,7 @@
                     </p>
                 </div>
             </div>
-            <div id="manualModeCardFooter" class="flex-none mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
+            <div id="manualModeCardFooter" class="flex-none teaControlGroupCardFooter">
                 <button id="manualSwitchRelay1Button" type="button" class="card-button-left hover:bg-green-200 dark:hover:bg-green-500/75 disabled:control-disabled"
                         onclick="ttcClient.switchRelay(1)">
                     <span><img src="img/toggle.svg" class="injectable icon-md inline mr-1 rotate-90">Fan #1</span>
@@ -283,14 +279,9 @@
             </ul>
             <div class="md:text-right space-x-2">
                 <a href="https://github.com/HodoArmand/thor-tea-cooler-frontend-basic"
-                   class="text-base p-2 hover:text-white hover:underline hover:underline-offset-4">
-                    <div class="inline-flex justify-center items-center w-8 h-8 text-center"
-                    >
-                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                        </svg>
-                    </div>
-                    Github
+                   class="inline-flex justify-center items-center text-center p-2 text-base hover:text-white hover:underline hover:underline-offset-4">
+                    <img src="img/github.svg" alt="Github" class="injectable icon-lg mr-1">
+                    <div>Github</div>
                 </a>
             </div>
         </div>
@@ -309,12 +300,9 @@
                     </h3>
                 </div>
                 <button type="button" onclick="ttcClient.ui.closeModal('info')"
-                        class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center icon-xl rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+                        class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center icon-xl rounded-md text-gray-500 hover:text-gray-400 text-sm">
                     <span class="sr-only">Close</span>
-                    <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
-                              fill="currentColor" />
-                    </svg>
+                    <img src="img/nav-menu-opened.svg" alt="X" class="icon-sm injectable">
                 </button>
             </div>
             <div class="p-4 overflow-y-auto space-y-4">
