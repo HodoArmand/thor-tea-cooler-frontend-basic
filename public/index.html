@@ -37,7 +37,7 @@
                     <img src="img/mug.svg" class="injectable icon-md">
                     <div>Tea Cooler</div>
                 </a>
-                <a href="/config" class="nav-items">
+                <a href="/configuration" class="nav-items">
                     <img src="img/gear.svg" class="injectable icon-md">
                     <div>Configuration</div>
                 </a>
@@ -61,7 +61,7 @@
 </header>
 <main class="h-fit w-full">
     <div id="hardwareCards" class="w-full py-10 px-2 md:px-4 lg:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div id="temperaturesCard" class="teaControlGroupCard">
+        <div id="temperaturesCard" class="teaControlGroupCard group">
             <div id="temperaturesCardHeader" class="flex flex-row relative h-56 w-full bg-gray-50 dark:bg-slate-950 rounded-t-xl p-2">
                 <canvas id="temperatureChart"></canvas>
             </div>
@@ -127,7 +127,7 @@
                 </button>
             </div>
         </div>
-        <div id="opModesCard" class="teaControlGroupCard">
+        <div id="opModesCard" class="teaControlGroupCard group">
             <div id="opModesCardHeader" class="h-56 flex-none flex flex-col justify-center items-center bg-gray-50 dark:bg-slate-950 rounded-t-xl">
                 <img id="modeIconManual" src="img/modes/manual.svg" class="injectable mode-icon">
                 <img id="modeIconAutoReady" src="img/modes/autoReady.svg" class="injectable mode-icon hidden">
@@ -206,7 +206,7 @@
                 </button>
             </div>
         </div>
-        <div id="manualModeCard" class="teaControlGroupCard">
+        <div id="manualModeCard" class="teaControlGroupCard group">
             <div id="manualModeCardHeader" class="h-56 flex-none flex flex-row justify-center items-center bg-gray-50 dark:bg-slate-950 rounded-t-xl">
                 <img id="relayStateIcon1On" src="img/propeller.svg" class="injectable icon-6xl text-green-800 dark:text-green-400">
                 <img id="relayStateIcon1Off" src="img/propeller_off.svg" class="injectable icon-6xl text-gray-700 dark:text-gray-400 hidden">
@@ -272,7 +272,7 @@
                     </a>
                 </li>
                 <li class="inline-block relative pr-8">
-                    <a class="inline-flex gap-x-2 hover:text-white hover:underline hover:underline-offset-4" href="/config">
+                    <a class="inline-flex gap-x-2 hover:text-white hover:underline hover:underline-offset-4" href="/configuration">
                         Configuration
                     </a>
                 </li>

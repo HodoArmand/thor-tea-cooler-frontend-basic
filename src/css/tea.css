@@ -78,17 +78,24 @@ html, body {
 
 .nav-items {
     @apply flex flex-row space-x-2;
+    @apply pb-px;
     @apply font-semibold text-gray-700 hover:text-emerald-700 dark:text-gray-200 dark:hover:text-emerald-500;
+    @apply sm:border-b-4 sm:border-transparent sm:hover:border-emerald-700 sm:dark:hover:border-emerald-500;
+
 }
 
 .nav-items-active {
     @apply flex flex-row space-x-2;
+    @apply pb-px;
     @apply font-semibold text-emerald-800 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-500;
+    @apply sm:border-b-4 sm:border-emerald-800 sm:hover:border-emerald-700 sm:dark:border-emerald-400 sm:dark:hover:border-emerald-500;
 }
 
 .nav-items-logout {
     @apply flex flex-row space-x-2;
+    @apply pb-px;
     @apply font-semibold text-gray-700 hover:text-rose-700 dark:text-gray-200 dark:hover:text-rose-500;
+    @apply sm:border-b-4 sm:border-transparent sm:hover:border-rose-700 sm:dark:hover:border-rose-500;
 }
 
 .nav-text {
@@ -235,6 +242,12 @@ input[type="range"]::-moz-range-thumb {
     @apply bg-green-50 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
 }
 
+.config-body {
+    @apply min-h-screen w-full flex flex-col justify-between;
+    @apply m-0 p-0;
+    @apply bg-green-50 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
+}
+
 .loginCard {
     @apply w-full sm:w-7/12 md:w-6/12 lg:w-5/12 xl:w-3/12;
     @apply flex flex-col items-center mx-auto mt-7 p-4 sm:p-7;
@@ -301,10 +314,34 @@ input[type="range"]::-moz-range-thumb {
     @apply border-b border-green-600/50 dark:border-green-800/50;
 }
 
-.teaControlGroupCard{
-    @apply group flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/70;
+.teaControlGroupCard {
+    @apply flex flex-col h-full bg-white border border-gray-300 shadow-md rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/70;
 }
 
-.teaControlGroupCardFooter{
+.teaControlGroupCardFooter {
     @apply mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700;
+}
+
+#configSidebar a {
+    @apply flex items-center h-fit;
+    @apply py-2;
+    @apply text-gray-700 dark:text-gray-200;
+    @apply hover:bg-emerald-100 dark:hover:bg-emerald-800;
+    @apply rounded-md;
+}
+
+#configSidebar a.active {
+    @apply flex items-center h-fit;
+    @apply py-2;
+    @apply text-gray-700 dark:text-gray-200;
+    @apply bg-emerald-100 dark:bg-emerald-800;
+    @apply rounded-md;
+}
+
+#configSidebar div button {
+    @apply flex items-center w-full h-fit;
+    @apply px-2 sm:px-4 py-2;
+    @apply text-gray-700 dark:text-gray-200;
+    @apply hover:bg-emerald-100 dark:hover:bg-emerald-800;
+    @apply rounded-md;
 }

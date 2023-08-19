@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TTC | 🖳 Configuration</title>
+    <link rel="icon" type="image/svg+xml" href="/img/TTC_logo.svg">
+
+    <script src="/js/lib/axios.min.js"></script>
+    <script src="/js/lib/svg-inject.min.js"></script>
+    <script src="/js/lib/preline_darkmodeSwitcher.js"></script>
+
+    <link href="/css/tea.css" rel="stylesheet">
+    <script type="module" src="/js/ttcClient.js"></script>
+
+</head>
+<body class="config-body">
+<header class="app-header">
+    <nav class="w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="flex flex-row items-center gap-x-2 text-xl font-semibold text-emerald-800 dark:text-green-50" href="/">
+                <img src="/img/TTC_logo.svg" class="icon-2xl">
+                <h1 class="hidden md:inline w-64 italic">Thor Tea Cooler</h1>
+                <h1 class="inline md:hidden w-32 italic">TTC</h1>
+            </a>
+            <div id="mobileNavBarMenuToggleButton" class="sm:hidden">
+                <button type="button" class="hs-collapse-toggle p-2 nav-button"
+                        data-hs-collapse="#navbar-image-and-text-1" aria-controls="navbar-image-and-text-1" aria-label="Toggle navigation">
+                    <img class="hs-collapse-open:hidden icon-md injectable" src="img/nav-menu-bars.svg" alt="≡">
+                    <img class="hs-collapse-open:block hidden icon-md injectable" src="img/nav-menu-opened.svg" alt="X">
+                </button>
+            </div>
+        </div>
+        <div id="navbar-image-and-text-1" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
+            <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5 sm:pr-2">
+                <a href="/" class="nav-items">
+                    <img src="img/mug.svg" class="injectable icon-md">
+                    <div>Tea Cooler</div>
+                </a>
+                <a href="/configuration" class="nav-items-active">
+                    <img src="img/gear.svg" class="injectable icon-md">
+                    <div>Configuration</div>
+                </a>
+                <button onclick="ttcClient.logout()" class="nav-items-logout">
+                    <img src="img/logout.svg" class="injectable icon-md">
+                    <div>Log out</div>
+                </button>
+                <a class="hs-dark-mode-active:hidden flex hs-dark-mode nav-text flex-row space-x-2"
+                   href="#!" data-hs-theme-click-value="dark">
+                    <img src="img/moon.svg" class="injectable icon-md">
+                    <div class="sm:hidden">Light/Dark mode</div>
+                </a>
+                <a class="hs-dark-mode-active:flex hidden hs-dark-mode nav-text flex-row space-x-2"
+                   href="#!" data-hs-theme-click-value="light">
+                    <img src="img/sun.svg" class="injectable icon-md">
+                    <div class="sm:hidden">Light/Dark mode</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="h-full w-full flex flex-row">
+    <aside id="configSidebar" class="flex flex-col w-20 h-full px-2 py-2 space-y-2 overflow-y-auto bg-white/80 backdrop-blur-sm border-r dark:bg-gray-900/80 dark:border-green-700/50">
+        <a class="px-4 justify-center" href="/configuration">
+            <img src="img/wifi.svg" alt="🖧" class="injectable icon-md flex-none">
+            <span class="!hidden font-medium">Network</span>
+        </a>
+        <a class="px-4 justify-center active" href="/hardwareConfiguration">
+            <img src="img/cpu.svg" alt="🖳" class="injectable icon-md flex-none">
+            <span class="!hidden font-medium">Hardware</span>
+        </a>
+        <a class="px-4 justify-center " href="/serverConfiguration">
+            <img src="img/server.svg" alt="☁" class="injectable icon-md flex-none">
+            <span class="!hidden font-medium">Server</span>
+        </a>
+        <div id="configSideBarClose" class="!hidden flex w-full pt-2 border-t-2 border-green-700/50">
+            <button type="button" onclick="ttcClient.ui.configSidebarClose()">
+                <img src="img/chevron-right.svg" alt="<" class="injectable icon-md flex-none rotate-180">
+                <span class="font-medium">Close</span>
+            </button>
+        </div>
+        <div id="configSideBarOpen" class="w-full justify-center pt-2 border-t-2 border-green-700/50">
+            <button type="button" onclick="ttcClient.ui.configSidebarOpen()">
+                <img src="img/chevron-right.svg" alt=">" class="injectable icon-md flex-none">
+            </button>
+        </div>
+    </aside>
+    <section id="configPageContent" class="w-full h-full">
+
+    </section>
+</main>
+<footer class="text-gray-100 dark:text-gray-300 bg-green-700 dark:bg-green-900 border-t border-green-800/50 dark:border-green-700/50">
+    <div class="max-w-[85rem] py-7 px-4 sm:px-6 lg:px-8 mx-auto">
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-5 text-center">
+            <div class="flex flex-row space-x-2 items-center">
+                <img src="/img/TTC_logo_fillcolor.svg" class="injectable w-9 h-9">
+                <p class="flex-none text-xl font-semibold">Thor Tea Cooler v1.0</p>
+            </div>
+
+            <ul class="text-center">
+                <li class="inline-block relative pr-8">
+                    <a class="inline-flex gap-x-2 hover:text-white hover:underline hover:underline-offset-4" href="/">
+                        Tea Cooler
+                    </a>
+                </li>
+                <li class="inline-block relative pr-8">
+                    <a class="inline-flex gap-x-2 hover:text-white hover:underline hover:underline-offset-4" href="/configuration">
+                        Configuration
+                    </a>
+                </li>
+            </ul>
+            <div class="md:text-right space-x-2">
+                <a href="https://github.com/HodoArmand/thor-tea-cooler-frontend-basic"
+                   class="inline-flex justify-center items-center text-center p-2 text-base hover:text-white hover:underline hover:underline-offset-4">
+                    <img src="img/github.svg" alt="Github" class="injectable icon-lg mr-1">
+                    <div>Github</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--Modals-->
+<section id="infoModal" class="hs-overlay hidden modalSection">
+    <div class="modalWrapper">
+        <div class="modalCard">
+            <div class="modalHeader">
+                <div class="flex inline-flex space-x-2 text-gray-800 dark:text-white">
+                    <img src="img/info-square.svg" class="injectable inline icon-md" alt="Info">
+                    <h3 id="infoModalTitle" class="font-bold">
+                        Modal title
+                    </h3>
+                </div>
+                <button type="button" onclick="ttcClient.ui.closeModal('info')"
+                        class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center icon-xl rounded-md text-gray-500 hover:text-gray-400 text-sm">
+                    <span class="sr-only">Close</span>
+                    <img src="img/nav-menu-opened.svg" alt="X" class="icon-sm injectable">
+                </button>
+            </div>
+            <div class="p-4 overflow-y-auto space-y-4">
+                <p id="infoModalDesc" class="mt-1 text-gray-800 dark:text-gray-400">
+                    Desc
+                </p>
+            </div>
+            <div class="flex justify-end items-center border-t dark:border-gray-700 rounded-b-lg">
+                <button type="button" onclick="ttcClient.ui.closeModal('info')" class="modalButton">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Body scripts-->
+<script src="js/lib/preline.js"></script>
+<script defer>
+    SVGInject(document.querySelectorAll("img.injectable"));
+</script>
+
+</body>
+</html>
+
+<script>
+    // Redirect to login if not logged in, otherwise the UI won't work due to the missing API key'
+    window.onload = () =>
+    {
+        window.ttcClient.api.auth.apiKey === 'unset' ? window.location.replace('/login') : '';
+    }
+</script>

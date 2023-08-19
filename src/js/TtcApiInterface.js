@@ -34,7 +34,11 @@ class TtcApiInterface
         axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
         axios.defaults.headers.common['Accept'] = 'application/json';
 
-        if (storedTtcIp !== "unset" && this.auth.apiKey !== "unset" && (window.location.href.indexOf("login") === -1 && window.location.href.indexOf("configuration") === -1))
+        let url = window.location.href;
+        let isIndexPage = (url.indexOf("login") === -1 && url.indexOf("configuration") === -1 && url.indexOf("Configuration") === -1);
+        let isConfigPage = (url.indexOf("configuration") !== -1 || url.indexOf("Configuration") !== -1);
+
+        if (storedTtcIp !== "unset" && this.auth.apiKey !== "unset" && (isIndexPage || isConfigPage))
         {
             axios.defaults.baseURL = "http://" + this.ttcIp;
             axios.defaults.headers.common['Authorization'] = "Bearer " + this.auth.apiKey;
@@ -94,6 +98,7 @@ class TtcApiInterface
                     console.log("-1- getHardwareState error: " + error.state + error.msg);
                 });
         };
+
     }
 }
 

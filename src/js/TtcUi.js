@@ -206,6 +206,67 @@ const closeModal = (type) =>
     document.getElementById(type + "ModalDesc").innerText = "";
 };
 
+const configSidebarClose = () =>
+{
+    const spanElements = document.querySelectorAll('#configSidebar a span');
+
+    spanElements.forEach(span =>
+    {
+        span.classList.add("!hidden");
+        span.classList.add("px-4");
+        span.classList.remove("px-2");
+    });
+
+    const aElements = document.querySelectorAll('#configSidebar a');
+
+    aElements.forEach(a =>
+    {
+        a.classList.add("justify-center");
+        a.classList.remove("justify-start");
+    });
+
+    const close = document.getElementById("configSideBarClose");
+    close.classList.add("!hidden");
+
+    const open = document.getElementById("configSideBarOpen");
+    open.classList.remove("!hidden");
+
+    const configSideBar = document.getElementById("configSidebar");
+    configSideBar.classList.remove("w-64");
+    configSideBar.classList.add("w-20");
+};
+
+const configSidebarOpen = () =>
+{
+    const spanElements = document.querySelectorAll('#configSidebar a span');
+
+    spanElements.forEach(span =>
+    {
+        span.classList.remove("!hidden");
+        span.classList.remove("px-4");
+        span.classList.add("px-2");
+    });
+
+    const aElements = document.querySelectorAll('#configSidebar a');
+
+    aElements.forEach(a =>
+    {
+        a.classList.remove("justify-center");
+        a.classList.add("justify-start");
+    });
+
+
+    const open = document.getElementById("configSideBarOpen");
+    open.classList.add("!hidden");
+
+    const close = document.getElementById("configSideBarClose");
+    close.classList.remove("!hidden");
+
+    const configSideBar = document.getElementById("configSidebar");
+    configSideBar.classList.add("w-64");
+    configSideBar.classList.remove("w-20");
+};
+
 /**
  * Utilities to manipulate ChartJS data and labels
  */
@@ -242,7 +303,16 @@ class TtcUi
 {
     constructor()
     {
-        if (window.location.href.indexOf("login") === -1 && window.location.href.indexOf("configuration") === -1)
+        let url = window.location.href;
+        let isIndexPage = (url.indexOf("login") === -1 && url.indexOf("configuration") === -1 && url.indexOf("Configuration") === -1);
+        let isConfigPage = (url.indexOf("configuration") !== -1 || url.indexOf("Configuration") !== -1);
+
+        if (isConfigPage)
+        {
+            this.configSidebarClose = configSidebarClose;
+            this.configSidebarOpen = configSidebarOpen;
+        }
+        else if (isIndexPage)
         {
             this.chartUtil = new ChartUtils();
             this.temperatureChart = new Chart(document.getElementById('temperatureChart'), {
