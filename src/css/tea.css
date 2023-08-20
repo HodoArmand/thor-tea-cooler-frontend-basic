@@ -245,6 +245,7 @@ input[type="range"]::-moz-range-thumb {
 .config-body {
     @apply min-h-screen w-full flex flex-col justify-between;
     @apply m-0 p-0;
+    @apply text-gray-800 dark:text-gray-300;
     @apply bg-green-50 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
 }
 
@@ -265,6 +266,14 @@ input[type="range"]::-moz-range-thumb {
 
 .button-login {
     @apply inline-flex justify-center items-center;
+    @apply py-3 px-4 gap-2;
+    @apply font-semibold text-green-800 dark:text-white hover:text-white;
+    @apply bg-white dark:bg-gray-500/25 hover:bg-green-600 dark:hover:bg-green-600;
+    @apply rounded-md border-2 border-green-600 dark:border dark:border-gray-300/25;
+}
+
+.button-save {
+    @apply flex flex-row justify-center items-center;
     @apply py-3 px-4 gap-2;
     @apply font-semibold text-green-800 dark:text-white hover:text-white;
     @apply bg-white dark:bg-gray-500/25 hover:bg-green-600 dark:hover:bg-green-600;
@@ -344,4 +353,24 @@ input[type="range"]::-moz-range-thumb {
     @apply text-gray-700 dark:text-gray-200;
     @apply hover:bg-emerald-100 dark:hover:bg-emerald-800;
     @apply rounded-md;
+}
+
+#configPageContentLayout h2 {
+    @apply font-semibold text-lg;
+    @apply border-b-2 border-green-400 dark:border-green-800/60;
+}
+
+.toggleCheckbox {
+    /*The toggle button slider*/
+    @apply appearance-none w-[3.75rem] h-8;
+    @apply relative shrink-0;
+    @apply bg-gray-200 checked:bg-none checked:bg-green-600 dark:bg-gray-700 dark:checked:bg-green-600;
+    @apply rounded-full border-2 border-transparent;
+    @apply cursor-pointer transition-colors ease-in-out duration-200;
+
+    /*The toggle button thumb*/
+    @apply before:inline-block before:w-7 before:h-7;
+    @apply before:bg-white checked:before:bg-white dark:before:bg-gray-400 dark:checked:before:bg-gray-400;
+    @apply before:shadow before:rounded-full;
+    @apply before:transform before:translate-x-0 checked:before:translate-x-full before:transition before:ease-in-out before:duration-200;
 }
