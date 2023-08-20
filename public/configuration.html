@@ -206,6 +206,6 @@
     // Redirect to login if not logged in, otherwise the UI won't work due to the missing API key'
     window.onload = () =>
     {
-        window.ttcClient.api.auth.apiKey === 'unset' ? window.location.replace('/login') : '';
+        window.ttcClient.api.auth.apiKey === 'unset' ? window.location.replace('./login') : '';
     }
 </script>

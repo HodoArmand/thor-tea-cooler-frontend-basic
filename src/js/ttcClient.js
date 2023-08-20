@@ -1,6 +1,6 @@
-import {TtcApiInterface} from "/js/TtcApiInterface.js";
-import {TtcUi} from "/js/TtcUi.js";
-import {formatFloat, enableById, disableById} from "/js/TtcClientUtilities.js";
+import {TtcApiInterface} from "./TtcApiInterface.js";
+import {TtcUi} from "./TtcUi.js";
+import {formatFloat, enableById, disableById} from "./TtcClientUtilities.js";
 
 class TtcClient
 {
@@ -313,7 +313,7 @@ class TtcClient
                 {
                     this.api.auth.userName = name;
                     this.api.auth.apiKey = result.msg;
-                    window.location.replace("/");
+                    window.location.replace("./");
                 }
                 else
                 {
@@ -343,7 +343,7 @@ class TtcClient
                 {
                     this.api.auth.userName = 'unset';
                     this.api.auth.apiKey = 'unset';
-                    window.location.replace('/login');
+                    window.location.replace('./login');
                 }
                 else
                 {

@@ -1,7 +1,7 @@
-import {TeaState, HardwareConfig, NetworkConfig, ServerConfig} from "/js/TtcState.js";
+import {TeaState, HardwareConfig, NetworkConfig, ServerConfig} from "./TtcState.js";
 
-import {TtcApiAuth} from "/js/TtcApiAuth.js";
-import {TtcApiHardwareRequests} from "/js/TtcApiHardwareRequests.js";
+import {TtcApiAuth} from "./TtcApiAuth.js";
+import {TtcApiHardwareRequests} from "./TtcApiHardwareRequests.js";
 
 class TtcApiInterface
 {

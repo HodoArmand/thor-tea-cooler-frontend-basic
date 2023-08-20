@@ -1,4 +1,4 @@
-import {responseToTtcApiResponse, responseToTtcApiResponseComplexMsg, errorResponseToTtcApiResponse} from "/js/TtcClientUtilities.js";
+import {responseToTtcApiResponse, responseToTtcApiResponseComplexMsg, errorResponseToTtcApiResponse} from "./TtcClientUtilities.js";
 
 const login = (name_, password_) =>
 {

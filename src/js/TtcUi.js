@@ -1,5 +1,5 @@
-import {formatFloat, capitalizeFirstLetter, enableById, disableById} from "/js/TtcClientUtilities.js";
-import {TeaState} from "/js/TtcState.js";
+import {formatFloat, capitalizeFirstLetter, enableById, disableById} from "./TtcClientUtilities.js";
+import {TeaState} from "./TtcState.js";
 
 const toggleButtonLoading = (buttonId) =>
 {
