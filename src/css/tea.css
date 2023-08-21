@@ -227,6 +227,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .input-label-top {
+    @apply w-fit flex flex-row items-center justify-start;
     @apply mb-2 text-sm text-gray-900 dark:text-gray-50;
 }
 
@@ -362,15 +363,55 @@ input[type="range"]::-moz-range-thumb {
 
 .toggleCheckbox {
     /*The toggle button slider*/
-    @apply appearance-none w-[3.75rem] h-8;
+    @apply appearance-none w-[5.75rem] h-12;
     @apply relative shrink-0;
-    @apply bg-gray-200 checked:bg-none checked:bg-green-600 dark:bg-gray-700 dark:checked:bg-green-600;
-    @apply rounded-full border-2 border-transparent;
+    @apply bg-gray-100 checked:bg-none checked:bg-green-500 dark:bg-gray-700 dark:checked:bg-emerald-700/60;
+    @apply rounded-lg border-2 border-gray-200/75 dark:border-gray-700;
     @apply cursor-pointer transition-colors ease-in-out duration-200;
 
     /*The toggle button thumb*/
-    @apply before:inline-block before:w-7 before:h-7;
+    @apply before:inline-block before:w-11 before:h-11;
     @apply before:bg-white checked:before:bg-white dark:before:bg-gray-400 dark:checked:before:bg-gray-400;
-    @apply before:shadow before:rounded-full;
+    @apply before:shadow before:rounded-lg;
     @apply before:transform before:translate-x-0 checked:before:translate-x-full before:transition before:ease-in-out before:duration-200;
+}
+
+
+/*Remove normal browser number input styling*/
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.custom-number-input input:focus {
+    outline: none !important;
+}
+
+.custom-number-input button:focus {
+    outline: none !important;
+}
+
+.numberInputField {
+    @apply w-full min-w-[5rem] h-12 flex items-center outline-none focus:outline-none;
+    @apply text-center text-base font-semibold text-gray-700 dark:text-gray-200;
+    @apply bg-emerald-50 dark:bg-emerald-700/60;
+    @apply border-y border-gray-200 dark:border-gray-700;
+}
+
+.numberInputButton {
+    @apply h-12 w-24 cursor-pointer outline-none flex flex-row items-center justify-center;
+    @apply text-xl font-bold text-gray-800 dark:text-gray-300 dark:hover:text-gray-50;
+    @apply bg-gray-50 dark:bg-gray-500/25 hover:bg-green-600 dark:hover:bg-green-600;
+    @apply border border-gray-200 dark:border-gray-700;
+}
+
+.numberInputButton-r {
+    @apply numberInputButton rounded-r-md;
+    @apply hover:bg-green-200 dark:hover:bg-green-500/75;
+}
+
+.numberInputButton-l {
+    @apply numberInputButton rounded-l-md;
+    @apply hover:bg-rose-200 dark:hover:bg-rose-500/75;
 }

@@ -86,7 +86,7 @@
         </div>
     </aside>
     <section id="configPageContent" class="w-full h-full sm:h-fit flex flex-row justify-center content-center">
-        <div id="configPageContentContainer" class="container w-full sm:w-fit flex flex-row justify-center content-start px-10 py-5 sm:m-5 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm sm:rounded-lg shadow-md">
+        <div id="configPageContentContainer" class="container w-full sm:w-fit flex flex-row justify-center content-start px-2 sm:px-10 py-5 sm:m-5 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm sm:rounded-lg shadow-md">
             <div id="configPageContentLayout" class="w-fit h-full flex flex-col space-y-2 pt-2">
 
             </div>
@@ -169,6 +169,15 @@
     // Redirect to login if not logged in, otherwise the UI won't work due to the missing API key'
     window.onload = () =>
     {
-        window.ttcClient.api.auth.apiKey === 'unset' ? window.location.replace('./login') : '';
+        if (window.ttcClient.api.auth.apiKey === 'unset')
+        {
+            window.location.replace('./login');
+        }
+        else
+        {
+            window.ttcClient.ui.initializeStyledNumberInputs();
+            //    fetchdata
+            // ui setdata
+        }
     }
 </script>

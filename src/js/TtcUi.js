@@ -299,6 +299,60 @@ class ChartUtils
     }
 };
 
+
+const initializeStyledNumberInputs = () =>
+{
+    function decrementInputValue(e)
+    {
+        const btn = e.target.parentNode.parentElement.querySelector(
+            'button[data-action="decrement"]'
+        );
+        const target = btn.nextElementSibling;
+        let value = Number(target.value);
+        const step = Number(target.step);
+        const minValue = Number(target.min);
+        if (value - step >= minValue)
+        {
+            value = (step % 1.0 !== 0) ? formatFloat(value - step) : value - step;
+            target.value = value;
+        }
+    }
+
+    function incrementInputValue(e)
+    {
+        const btn = e.target.parentNode.parentElement.querySelector(
+            'button[data-action="decrement"]'
+        );
+        const target = btn.nextElementSibling;
+        let value = Number(target.value);
+        const step = Number(target.step);
+        const maxValue = Number(target.max);
+        if (value + step <= maxValue)
+        {
+            value = (step % 1.0 !== 0) ? formatFloat(value + step) : value + step;
+            target.value = value;
+        }
+    }
+
+    const decrementButtons = document.querySelectorAll(
+        `button[data-action="decrement"]`
+    );
+
+    const incrementButtons = document.querySelectorAll(
+        `button[data-action="increment"]`
+    );
+
+    decrementButtons.forEach(btn =>
+    {
+        btn.addEventListener("click", decrementInputValue);
+    });
+
+    incrementButtons.forEach(btn =>
+    {
+        btn.addEventListener("click", incrementInputValue);
+    });
+};
+
 class TtcUi
 {
     constructor()
@@ -311,6 +365,7 @@ class TtcUi
         {
             this.configSidebarClose = configSidebarClose;
             this.configSidebarOpen = configSidebarOpen;
+            this.initializeStyledNumberInputs = initializeStyledNumberInputs;
         }
         else if (isIndexPage)
         {

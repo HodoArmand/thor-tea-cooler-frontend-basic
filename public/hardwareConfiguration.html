@@ -87,23 +87,76 @@
     </aside>
     <section id="configPageContent" class="w-full h-full sm:h-fit flex flex-row justify-center content-center">
         <div id="configPageContentContainer"
-             class="container w-full sm:w-fit flex flex-row justify-center content-start px-10 py-5 sm:m-5 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm sm:rounded-lg shadow-md">
+             class="container w-full sm:w-fit flex flex-row justify-center content-start px-2 sm:px-10 py-5 sm:m-5 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm sm:rounded-lg shadow-md">
             <div id="configPageContentLayout" class="w-fit h-full flex flex-col space-y-2 pt-2">
                 <h2>Hardware configuration</h2>
-                <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 p-5">
+                <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 p-5">
                     <div id="input-group-debugMode">
-                        <label for="debugMode" class="block input-label-top">debugMode</label>
+                        <label for="debugMode" class="block input-label-top">
+                            <img src="img/bug.svg" alt="🐞" class="injectable inline-block icon-md mr-1">
+                            <span>Debug mode</span>
+                        </label>
                         <div class="flex items-center space-x-2">
                             <label class="text-sm">Off</label>
                             <input type="checkbox" name="debugMode" id="debugMode" class="toggleCheckbox">
                             <label class="text-sm">On</label>
                         </div>
                     </div>
-                    <p>oneWireIoPin</p>
-                    <p>relayIoPin1</p>
-                    <p>relayIoPin2</p>
-                    <p>temperatureSensorOffsetCelsius</p>
-                    <p>temperatureTargetDefault</p>
+                    <div id="input-group-oneWireIoPin">
+                        <label for="oneWireIoPin" class="block input-label-top">
+                            <img src="img/temperature.svg" alt="🌡" class="injectable inline-block icon-md mr-1">
+                            <span>OneWire IoPin</span>
+                        </label>
+                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
+                            <button data-action="decrement" class="numberInputButton-l">-</button>
+                            <input id="oneWireIoPin" type="number" class="numberInputField" name="oneWireIoPin" value="0" min="0" max="39" step="1.0" />
+                            <button data-action="increment" class="numberInputButton-r">+</button>
+                        </div>
+                    </div>
+                    <div id="input-group-relayIoPin1">
+                        <label for="relayIoPin1" class="block input-label-top">
+                            <img src="img/propeller.svg" alt="❊" class="injectable inline-block icon-md mr-1">
+                            <span>Relay #1 IoPin</span>
+                        </label>
+                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
+                            <button data-action="decrement" class="numberInputButton-l">-</button>
+                            <input id="relayIoPin1" type="number" class="numberInputField" name="relayIoPin1" value="0" min="0" max="39" step="1.0" />
+                            <button data-action="increment" class="numberInputButton-r">+</button>
+                        </div>
+                    </div>
+                    <div id="input-group-relayIoPin2">
+                        <label for="relayIoPin2" class="block input-label-top">
+                            <img src="img/propeller.svg" alt="❊" class="injectable inline-block icon-md mr-1">
+                            <span>Relay #2 IoPin</span>
+                        </label>
+                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
+                            <button data-action="decrement" class="numberInputButton-l">-</button>
+                            <input id="relayIoPin2" type="number" class="numberInputField" name="relayIoPin2" value="0" min="0" max="39" step="1.0" />
+                            <button data-action="increment" class="numberInputButton-r">+</button>
+                        </div>
+                    </div>
+                    <div id="input-group-temperatureSensorOffsetCelsius">
+                        <label for="temperatureSensorOffsetCelsius" class="block input-label-top">
+                            <img src="img/temperature-plus.svg" alt="🌡" class="injectable inline-block icon-md mr-1">
+                            <span>Sensor offset ℃</span>
+                        </label>
+                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
+                            <button data-action="decrement" class="numberInputButton-l">-</button>
+                            <input id="temperatureSensorOffsetCelsius" type="number" class="numberInputField" name="temperatureSensorOffsetCelsius" value="0" min="-70.00" max="70.00" step=".10" />
+                            <button data-action="increment" class="numberInputButton-r">+</button>
+                        </div>
+                    </div>
+                    <div id="input-group-temperatureTargetDefault">
+                        <label for="temperatureTargetDefault" class="block input-label-top">
+                            <img src="img/temperature-minus.svg" alt="🌡" class="injectable inline-block icon-md mr-1">
+                            <span>Target default ℃</span>
+                        </label>
+                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
+                            <button data-action="decrement" class="numberInputButton-l">-</button>
+                            <input id="temperatureTargetDefault" type="number" class="numberInputField" name="temperatureTargetDefault" value="0" min="-70.00" max="70.00" step=".10" />
+                            <button data-action="increment" class="numberInputButton-r">+</button>
+                        </div>
+                    </div>
                 </div>
                 <button id="saveTtcNetworkConfigButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
                     <img src="img/floppy.svg" alt="💾" class="injectable icon-md">
@@ -193,6 +246,15 @@
     // Redirect to login if not logged in, otherwise the UI won't work due to the missing API key'
     window.onload = () =>
     {
-        window.ttcClient.api.auth.apiKey === 'unset' ? window.location.replace('./login') : '';
+        if (window.ttcClient.api.auth.apiKey === 'unset')
+        {
+            window.location.replace('./login');
+        }
+        else
+        {
+            window.ttcClient.ui.initializeStyledNumberInputs();
+            //    fetchdata
+            // ui setdata
+        }
     }
 </script>
