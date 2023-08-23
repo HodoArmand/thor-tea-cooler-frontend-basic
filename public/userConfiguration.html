@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TTC | ☁ Configuration</title>
+    <title>TTC | 👤 Configuration</title>
     <link rel="icon" type="image/svg+xml" href="./img/TTC_logo.svg">
 
     <script src="./js/lib/axios.min.js"></script>
@@ -89,98 +89,8 @@
         <div id="configPageContentContainer"
              class="container w-full sm:w-fit flex flex-row justify-center content-start px-2 sm:px-10 py-5 sm:m-5 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm sm:rounded-lg shadow-md">
             <div id="configPageContentLayout" class="w-fit h-full flex flex-col space-y-2 pt-2">
-                <h2>Server configuration</h2>
-                <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 p-5">
-                    <div id="input-group-debugMode">
-                        <label for="debugMode" class="block input-label-top">
-                            <img src="img/bug.svg" alt="🐞" class="injectable inline-block icon-md mr-1">
-                            <span>Debug mode</span>
-                        </label>
-                        <div class="flex items-center space-x-2">
-                            <label class="text-sm">Off</label>
-                            <input type="checkbox" name="debugMode" id="debugMode" class="toggleCheckbox">
-                            <label class="text-sm">On</label>
-                        </div>
-                    </div>
-                    <div id="input-group-port">
-                        <label for="port" class="block input-label-top">
-                            <img src="img/hierarchy.svg" alt="🖧" class="injectable inline-block icon-md mr-1">
-                            <span>HTTP Port</span>
-                        </label>
-                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
-                            <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="port" type="number" class="numberInputField" name="port" value="80" min="0" max="65535" step="1.0" />
-                            <button data-action="increment" class="numberInputButton-r">+</button>
-                        </div>
-                    </div>
-                    <div id="input-group-apiKeyLength">
-                        <label for="apiKeyLength" class="block input-label-top">
-                            <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
-                            <span>API key length</span>
-                        </label>
-                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
-                            <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="apiKeyLength" type="number" class="numberInputField" name="apiKeyLength" value="50" min="10" max="254" step="1.0" />
-                            <button data-action="increment" class="numberInputButton-r">+</button>
-                        </div>
-                    </div>
-                    <div id="input-group-apiThrottleIntervalMs">
-                        <label for="apiThrottleIntervalMs" class="block input-label-top">
-                            <img src="img/alert-octagon.svg" alt="⚠" class="injectable inline-block icon-md mr-1">
-                            <span>API throttle interval <span class="italic">(ms)</span></span>
-                        </label>
-                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
-                            <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="apiThrottleIntervalMs" type="number" class="numberInputField" name="apiThrottleIntervalMs" value="250" min="0" step="1.0" />
-                            <button data-action="increment" class="numberInputButton-r">+</button>
-                        </div>
-                    </div>
-                    <div id="input-group-maxStoredUsers">
-                        <label for="maxStoredUsers" class="block input-label-top">
-                            <img src="img/user-group.svg" alt="👥" class="injectable inline-block icon-md mr-1">
-                            <span>Max stored users</span>
-                        </label>
-                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
-                            <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="maxStoredUsers" type="number" class="numberInputField" name="maxStoredUsers" value="10" min="1" step="1.0" />
-                            <button data-action="increment" class="numberInputButton-r">+</button>
-                        </div>
-                    </div>
-                    <div id="input-group-maxApiKeysPerUser">
-                        <label for="maxApiKeysPerUser" class="block input-label-top">
-                            <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
-                            <span>Max API keys per user</span>
-                        </label>
-                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
-                            <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="maxApiKeysPerUser" type="number" class="numberInputField" name="maxApiKeysPerUser" value="10" min="1" step="1.0" />
-                            <button data-action="increment" class="numberInputButton-r">+</button>
-                        </div>
-                    </div>
-                    <div id="input-group-maxApiKeysTotal">
-                        <label for="maxApiKeysTotal" class="block input-label-top">
-                            <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
-                            <span>Max API keys total</span>
-                        </label>
-                        <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
-                            <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="maxApiKeysTotal" type="number" class="numberInputField" name="maxApiKeysTotal" value="10" min="1" step="1.0" />
-                            <button data-action="increment" class="numberInputButton-r">+</button>
-                        </div>
-                    </div>
-                    <div id="input-group-selfHostMode">
-                        <label for="selfHostMode" class="block input-label-top">
-                            <img src="img/hierarchy.svg" alt="🖧" class="injectable inline-block icon-md mr-1">
-                            <span>Self Host mode</span>
-                        </label>
-                        <div class="flex items-center space-x-2">
-                            <label class="text-sm">Off</label>
-                            <input type="checkbox" name="selfHostMode" id="selfHostMode" class="toggleCheckbox">
-                            <label class="text-sm">On</label>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </div>
     </section>
 </main>
 <footer class="text-gray-100 dark:text-gray-300 bg-green-700 dark:bg-green-900 border-t border-green-800/50 dark:border-green-700/50">
