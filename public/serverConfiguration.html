@@ -61,6 +61,10 @@
 </header>
 <main class="h-full w-full flex flex-row">
     <aside id="configSidebar" class="flex flex-col w-20 h-full px-2 py-2 space-y-2 overflow-y-auto bg-white/80 backdrop-blur-sm border-r dark:bg-gray-900/80 dark:border-green-700/50">
+        <a class="px-4 justify-center" href="./userConfiguration">
+            <img src="img/user.svg" alt="👥" class="injectable icon-md flex-none">
+            <span class="!hidden font-medium">User</span>
+        </a>
         <a class="px-4 justify-center" href="./configuration">
             <img src="img/wifi.svg" alt="🖧" class="injectable icon-md flex-none">
             <span class="!hidden font-medium">Network</span>
@@ -180,7 +184,16 @@
                         </div>
                     </div>
                 </div>
+                <button id="saveServerConfigurationButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                    <img src="img/floppy.svg" alt="+" class="injectable icon-md">
+                    <span>Save</span>
+                </button>
+                <button id="saveServerConfigurationButtonLoader" type="button" onclick=""
+                        class="!hidden button-save !mt-5">
+                    <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
+                </button>
             </div>
+        </div>
     </section>
 </main>
 <footer class="text-gray-100 dark:text-gray-300 bg-green-700 dark:bg-green-900 border-t border-green-800/50 dark:border-green-700/50">

@@ -61,6 +61,10 @@
 </header>
 <main class="h-full w-full flex flex-row">
     <aside id="configSidebar" class="flex flex-col w-20 h-full px-2 py-2 space-y-2 overflow-y-auto bg-white/80 backdrop-blur-sm border-r dark:bg-gray-900/80 dark:border-green-700/50">
+        <a class="px-4 justify-center active" href="./userConfiguration">
+            <img src="img/user.svg" alt="👥" class="injectable icon-md flex-none">
+            <span class="!hidden font-medium">User</span>
+        </a>
         <a class="px-4 justify-center" href="./configuration">
             <img src="img/wifi.svg" alt="🖧" class="injectable icon-md flex-none">
             <span class="!hidden font-medium">Network</span>
@@ -69,7 +73,7 @@
             <img src="img/cpu.svg" alt="🖳" class="injectable icon-md flex-none">
             <span class="!hidden font-medium">Hardware</span>
         </a>
-        <a class="px-4 justify-center active" href="./serverConfiguration">
+        <a class="px-4 justify-center" href="./serverConfiguration">
             <img src="img/server.svg" alt="☁" class="injectable icon-md flex-none">
             <span class="!hidden font-medium">Server</span>
         </a>
@@ -89,6 +93,84 @@
         <div id="configPageContentContainer"
              class="container w-full sm:w-fit flex flex-row justify-center content-start px-2 sm:px-10 py-5 sm:m-5 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm sm:rounded-lg shadow-md">
             <div id="configPageContentLayout" class="w-fit h-full flex flex-col space-y-2 pt-2">
+                <!--                TODO: unfuck page height here on mobile view-->
+                <h2>User profile</h2>
+                <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 p-5">
+                    <div>
+                        <div class="block input-label-top">Name</div>
+                        <div id="info-name">namePlaceholder</div>
+                    </div>
+                    <div id="input-group-name">
+                        <label for="name" class="block input-label-top">New name</label>
+                        <input type="text" id="name" name="name" minlength="1" maxlength="128"
+                               class="requestData py-3 px-4 block w-full text-input">
+                    </div>
+                    <div id="input-group-password">
+                        <div class="flex justify-between items-center">
+                            <label for="password" class="block input-label-top">New password</label>
+                        </div>
+                        <input type="password" id="password" name="password" minlength="1" maxlength="128"
+                               class="requestData py-3 px-4 block w-full text-input">
+                    </div>
+                    <div id="input-group-password-confirm">
+                        <div class="flex justify-between items-center">
+                            <label for="password-confirm" class="block input-label-top">Confirm new password</label>
+                        </div>
+                        <input type="password" id="password-confirm" name="password-confirm" minlength="1" maxlength="128"
+                               class="requestData py-3 px-4 block w-full text-input">
+                    </div>
+                </div>
+                <button id="saveUserConfigButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                    <img src="img/floppy.svg" alt="💾" class="injectable icon-md">
+                    <span>Save</span>
+                </button>
+                <button id="saveUserConfigButtonLoader" type="button" onclick=""
+                        class="!hidden button-save !mt-5">
+                    <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
+                </button>
+
+                <h2>Delete Account</h2>
+                <div class="p-5">This action is permanent and restoring your account after deletion will not be possible!</div>
+                <!--                TODO: add confirm del modal too-->
+                <button id="deleteUserButton" type="button" onclick="" class="button-delete w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                    <img src="img/trash-x.svg" alt="🗑" class="injectable icon-md">
+                    <span>Delete</span>
+                </button>
+                <button id="deleteUserButtonLoader" type="button" onclick=""
+                        class="!hidden button-delete !mt-5">
+                    <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
+                </button>
+
+                <h2>New User</h2>
+                <div class="w-full h-full flex flex-col items-center">
+                    <div id="input-group-register-name" class="w-full sm:w-2/3 md:w-1/2">
+                        <label for="register-name" class="block input-label-top">Name</label>
+                        <input type="text" id="register-name" name="register-name" minlength="1" maxlength="128"
+                               class="requestData py-3 px-4 block w-full text-input">
+                    </div>
+                    <div id="input-group-register-password" class="w-full sm:w-2/3 md:w-1/2">
+                        <div class="flex justify-between items-center">
+                            <label for="register-password" class="block input-label-top">Password</label>
+                        </div>
+                        <input type="password" id="register-password" name="register-password" minlength="1" maxlength="128"
+                               class="requestData py-3 px-4 block w-full text-input">
+                    </div>
+                    <div id="input-group-register-password-confirm" class="w-full sm:w-2/3 md:w-1/2">
+                        <div class="flex justify-between items-center">
+                            <label for="register-password-confirm" class="block input-label-top">Confirm password</label>
+                        </div>
+                        <input type="password" id="register-password-confirm" name="register-password-confirm" minlength="1" maxlength="128"
+                               class="requestData py-3 px-4 block w-full text-input">
+                    </div>
+                </div>
+                <button id="registerUserButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                    <img src="img/user-plus.svg" alt="+" class="injectable icon-md">
+                    <span>Register</span>
+                </button>
+                <button id="registerUserButtonLoader" type="button" onclick=""
+                        class="!hidden button-save !mt-5">
+                    <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
+                </button>
             </div>
         </div>
     </section>
