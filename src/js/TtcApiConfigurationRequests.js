@@ -67,6 +67,43 @@ const setHardwareConfig = (formData) =>
         });
 };
 
+const getServerConfig = () =>
+{
+    return axios.get('getServerConfig')
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            return errorResponseToTtcApiResponse(error);
+        });
+};
+
+const setServerConfig = (formData) =>
+{
+    let requestData = new URLSearchParams({
+        debugMode: formData.debugMode,
+        port: formData.port,
+        apiKeyLength: formData.apiKeyLength,
+        apiThrottleIntervalMs: formData.apiThrottleIntervalMs,
+        maxStoredUsers: formData.maxStoredUsers,
+        maxApiKeysPerUser: formData.maxApiKeysPerUser,
+        maxApiKeysTotal: formData.maxApiKeysTotal,
+        selfHostMode: formData.selfHostMode,
+    });
+
+    return axios.put('setServerConfig', requestData)
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            return errorResponseToTtcApiResponse(error);
+        });
+};
+
 
 class TtcApiConfigurationRequests
 {
@@ -76,6 +113,8 @@ class TtcApiConfigurationRequests
         this.setNetworkConfig = setNetworkConfig;
         this.getHardwareConfig = getHardwareConfig;
         this.setHardwareConfig = setHardwareConfig;
+        this.getServerConfig = getServerConfig;
+        this.setServerConfig = setServerConfig;
     }
 }
 

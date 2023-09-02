@@ -102,7 +102,7 @@
                         </label>
                         <div class="flex items-center space-x-2">
                             <label class="text-sm">Off</label>
-                            <input type="checkbox" name="debugMode" id="debugMode" class="toggleCheckbox">
+                            <input type="checkbox" name="debugMode" id="debugMode" class="toggleCheckbox" data-setConfigurationRequest="true">
                             <label class="text-sm">On</label>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="port" type="number" class="numberInputField" name="port" value="80" min="0" max="65535" step="1.0" />
+                            <input id="port" type="number" class="numberInputField" name="port" data-setConfigurationRequest="true" value="80" min="0" max="65535" step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -124,7 +124,8 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="apiKeyLength" type="number" class="numberInputField" name="apiKeyLength" value="50" min="10" max="254" step="1.0" />
+                            <input id="apiKeyLength" type="number" class="numberInputField" name="apiKeyLength" data-setConfigurationRequest="true" value="50" min="10" max="254"
+                                   step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -135,7 +136,8 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="apiThrottleIntervalMs" type="number" class="numberInputField" name="apiThrottleIntervalMs" value="250" min="0" step="1.0" />
+                            <input id="apiThrottleIntervalMs" type="number" class="numberInputField" name="apiThrottleIntervalMs" data-setConfigurationRequest="true" value="250" min="0"
+                                   step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -146,7 +148,7 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="maxStoredUsers" type="number" class="numberInputField" name="maxStoredUsers" value="10" min="1" step="1.0" />
+                            <input id="maxStoredUsers" type="number" class="numberInputField" name="maxStoredUsers" data-setConfigurationRequest="true" value="10" min="1" step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -157,7 +159,8 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="maxApiKeysPerUser" type="number" class="numberInputField" name="maxApiKeysPerUser" value="10" min="1" step="1.0" />
+                            <input id="maxApiKeysPerUser" type="number" class="numberInputField" name="maxApiKeysPerUser" data-setConfigurationRequest="true" value="10" min="1"
+                                   step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -168,7 +171,8 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="maxApiKeysTotal" type="number" class="numberInputField" name="maxApiKeysTotal" value="10" min="1" step="1.0" />
+                            <input id="maxApiKeysTotal" type="number" class="numberInputField" name="maxApiKeysTotal" data-setConfigurationRequest="true" value="10" min="1"
+                                   step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -179,17 +183,17 @@
                         </label>
                         <div class="flex items-center space-x-2">
                             <label class="text-sm">Off</label>
-                            <input type="checkbox" name="selfHostMode" id="selfHostMode" class="toggleCheckbox">
+                            <input type="checkbox" name="selfHostMode" id="selfHostMode" class="toggleCheckbox" data-setConfigurationRequest="true">
                             <label class="text-sm">On</label>
                         </div>
                     </div>
                 </div>
-                <button id="saveServerConfigurationButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                <button id="saveTtcServerConfigButton" type="button" onclick="ttcClient.setServerConfig()" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
                     <img src="img/floppy.svg" alt="+" class="injectable icon-md">
                     <span>Save</span>
                 </button>
-                <button id="saveServerConfigurationButtonLoader" type="button" onclick=""
-                        class="!hidden button-save !mt-5">
+                <button id="saveTtcServerConfigButtonLoader" type="button" onclick=""
+                        class="!hidden button-save w-full sm:w-1/2 self-center !mt-5">
                     <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
                 </button>
             </div>
@@ -279,8 +283,7 @@
         else
         {
             window.ttcClient.ui.initializeStyledNumberInputs();
-            //    fetchdata
-            // ui setdata
+            window.ttcClient.getServerConfig();
         }
     }
 </script>
