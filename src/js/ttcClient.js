@@ -1,6 +1,6 @@
 import {TtcApiInterface} from "./TtcApiInterface.js";
 import {TtcUi} from "./TtcUi.js";
-import {formatFloat, enableById, disableById} from "./TtcClientUtilities.js";
+import {formatFloat, enableById, disableById, getFormDataByDataTag, setFormDataFromResponse} from "./TtcClientUtilities.js";
 
 class TtcClient
 {
@@ -361,6 +361,7 @@ class TtcClient
 
     isTtcTest = () =>
     {
+
         this.ui.toggleButtonLoading("ttcIpTestButton");
 
         let address = document.getElementById("ttcIp").value;
@@ -370,6 +371,9 @@ class TtcClient
         document.getElementById("ttcIpOk").classList.add("!hidden");
         document.getElementById("ttcIpNotOk").classList.add("!hidden");
 
+        let url = window.location.href;
+        let isConfigPage = (url.indexOf("configuration") !== -1 || url.indexOf("Configuration") !== -1);
+
         this.api.hwRequests.isTtc()
             .then(result =>
             {
@@ -378,7 +382,7 @@ class TtcClient
                 {
                     this.api.ttcIp = address;
                     document.getElementById("ttcIpOk").classList.remove("!hidden");
-                    enableById("loginButton");
+                    isConfigPage ? '' : enableById("loginButton");
                 }
                 else
                 {
@@ -386,7 +390,7 @@ class TtcClient
                     this.ui.openModal('info', 'Error - Not a TTC Device', 'No TTC Device was found at the given address.');
 
                     document.getElementById("ttcIpNotOk").classList.remove("!hidden");
-                    disableById("loginButton");
+                    isConfigPage ? '' : disableById("loginButton");
                 }
             })
             .catch(error =>
@@ -396,11 +400,66 @@ class TtcClient
                 this.ui.openModal('info', 'Error - Not a TTC Device or System error.', 'No TTC Device was found at the given address or there was a system error when making the request.');
 
                 document.getElementById("ttcIpNotOk").classList.remove("!hidden");
-                disableById("loginButton");
+                isConfigPage ? '' : disableById("loginButton");
             })
             .finally(() =>
             {
                 this.ui.toggleButtonLoading("ttcIpTestButton");
+            });
+    };
+
+    getNetworkConfig = () =>
+    {
+        this.api.configRequests.getNetworkConfig()
+            .then(result =>
+            {
+                if (result.statusCode === 200 && result.status === "ok")
+                {
+                    let config = JSON.parse(result.msg);
+                    setFormDataFromResponse(config);
+                }
+                else
+                {
+                    console.log("-1- getNetworkConfig: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- getNetworkConfig error: " + error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+            });
+    };
+
+    setNetworkConfig = () =>
+    {
+        this.ui.toggleButtonLoading("saveTtcNetworkConfigButton");
+
+        let formData = getFormDataByDataTag("setConfigurationRequest");
+
+        this.api.configRequests.setNetworkConfig(formData)
+            .then(result =>
+            {
+                if (result.statusCode === 201 && result.status === "ok")
+                {
+                    this.ui.openModal('info', result.status, "Configuration saved successfully.");
+                }
+                else
+                {
+                    console.log("-1- setNetworkConfig: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- setNetworkConfig error: " + error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+            })
+            .finally(() =>
+            {
+                this.ui.toggleButtonLoading("saveTtcNetworkConfigButton");
             });
     };
 

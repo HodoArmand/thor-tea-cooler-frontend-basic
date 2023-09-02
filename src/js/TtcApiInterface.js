@@ -2,6 +2,7 @@ import {TeaState, HardwareConfig, NetworkConfig, ServerConfig} from "./TtcState.
 
 import {TtcApiAuth} from "./TtcApiAuth.js";
 import {TtcApiHardwareRequests} from "./TtcApiHardwareRequests.js";
+import {TtcApiConfigurationRequests} from "./TtcApiConfigurationRequests.js";
 
 class TtcApiInterface
 {
@@ -29,6 +30,7 @@ class TtcApiInterface
 
         this.auth = new TtcApiAuth();
         this.hwRequests = new TtcApiHardwareRequests();
+        this.configRequests = new TtcApiConfigurationRequests();
 
         axios.defaults.timeout = 5000;
         axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
