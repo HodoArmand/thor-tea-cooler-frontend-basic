@@ -463,6 +463,61 @@ class TtcClient
             });
     };
 
+    getHardwareConfig = () =>
+    {
+        this.api.configRequests.getHardwareConfig()
+            .then(result =>
+            {
+                if (result.statusCode === 200 && result.status === "ok")
+                {
+                    let config = JSON.parse(result.msg);
+                    setFormDataFromResponse(config);
+                }
+                else
+                {
+                    console.log("-1- getHardwareConfig: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- getHardwareConfig error: " + error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+            });
+    };
+
+    setHardwareConfig = () =>
+    {
+        this.ui.toggleButtonLoading("saveTtcHardwareConfigButton");
+
+        let formData = getFormDataByDataTag("setConfigurationRequest");
+
+        this.api.configRequests.setHardwareConfig(formData)
+            .then(result =>
+            {
+                if (result.statusCode === 201 && result.status === "ok")
+                {
+                    this.ui.openModal('info', result.status, "Configuration saved successfully.");
+                }
+                else
+                {
+                    console.log("-1- setHardwareConfig: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- setHardwareConfig error: " + error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.message + ' / ' + error.response + '\nField Errors:\n' + fieldErrors);
+            })
+            .finally(() =>
+            {
+                this.ui.toggleButtonLoading("saveTtcHardwareConfigButton");
+            });
+    };
+
 }
 
 const initSSEventlisteners = (sse) =>

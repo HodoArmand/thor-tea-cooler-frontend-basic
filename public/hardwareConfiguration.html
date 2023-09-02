@@ -102,7 +102,7 @@
                         </label>
                         <div class="flex items-center space-x-2">
                             <label class="text-sm">Off</label>
-                            <input type="checkbox" name="debugMode" id="debugMode" class="toggleCheckbox">
+                            <input type="checkbox" name="debugMode" id="debugMode" class="toggleCheckbox" data-setConfigurationRequest="true">
                             <label class="text-sm">On</label>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="oneWireIoPin" type="number" class="numberInputField" name="oneWireIoPin" value="0" min="0" max="39" step="1.0" />
+                            <input id="oneWireIoPin" type="number" class="numberInputField" name="oneWireIoPin" data-setConfigurationRequest="true" value="0" min="0" max="39" step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="relayIoPin1" type="number" class="numberInputField" name="relayIoPin1" value="0" min="0" max="39" step="1.0" />
+                            <input id="relayIoPin1" type="number" class="numberInputField" name="relayIoPin1" data-setConfigurationRequest="true" value="0" min="0" max="39" step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="relayIoPin2" type="number" class="numberInputField" name="relayIoPin2" value="0" min="0" max="39" step="1.0" />
+                            <input id="relayIoPin2" type="number" class="numberInputField" name="relayIoPin2" data-setConfigurationRequest="true" value="0" min="0" max="39" step="1.0" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -146,7 +146,8 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="temperatureSensorOffsetCelsius" type="number" class="numberInputField" name="temperatureSensorOffsetCelsius" value="0" min="-70.00" max="70.00" step=".10" />
+                            <input id="temperatureSensorOffsetCelsius" type="number" class="numberInputField" name="temperatureSensorOffsetCelsius" data-setConfigurationRequest="true" value="0" min="-70.00" max="70.00"
+                                   step=".10" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
@@ -157,16 +158,16 @@
                         </label>
                         <div class="flex flex-row h-12 w-full sm:w-2/3 rounded-lg relative bg-transparent mt-1">
                             <button data-action="decrement" class="numberInputButton-l">-</button>
-                            <input id="temperatureTargetDefault" type="number" class="numberInputField" name="temperatureTargetDefault" value="0" min="-70.00" max="70.00" step=".10" />
+                            <input id="temperatureTargetDefault" type="number" class="numberInputField" name="temperatureTargetDefault" data-setConfigurationRequest="true" value="0" min="-70.00" max="70.00" step=".10" />
                             <button data-action="increment" class="numberInputButton-r">+</button>
                         </div>
                     </div>
                 </div>
-                <button id="saveTtcNetworkConfigButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                <button id="saveTtcHardwareConfigButton" type="button" onclick="ttcClient.setHardwareConfig()" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
                     <img src="img/floppy.svg" alt="💾" class="injectable icon-md">
                     <span>Save</span>
                 </button>
-                <button id="saveTtcNetworkConfigButtonLoader" type="button" onclick=""
+                <button id="saveTtcHardwareConfigButtonLoader" type="button" onclick=""
                         class="!hidden button-save w-full sm:w-1/2 self-center !mt-5">
                     <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
                 </button>
@@ -257,8 +258,7 @@
         else
         {
             window.ttcClient.ui.initializeStyledNumberInputs();
-            //    fetchdata
-            // ui setdata
+            window.ttcClient.getHardwareConfig();
         }
     }
 </script>

@@ -32,6 +32,41 @@ const setNetworkConfig = (formData) =>
         });
 };
 
+const getHardwareConfig = () =>
+{
+    return axios.get('getHardwareConfig')
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            return errorResponseToTtcApiResponse(error);
+        });
+};
+
+const setHardwareConfig = (formData) =>
+{
+    let requestData = new URLSearchParams({
+        debugMode: formData.debugMode,
+        relayIoPin1: formData.relayIoPin1,
+        relayIoPin2: formData.relayIoPin2,
+        oneWireIoPin: formData.oneWireIoPin,
+        temperatureSensorOffsetCelsius: formData.temperatureSensorOffsetCelsius,
+        temperatureTargetDefault: formData.temperatureTargetDefault,
+    });
+
+    return axios.put('setHardwareConfig', requestData)
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            return errorResponseToTtcApiResponse(error);
+        });
+};
+
 
 class TtcApiConfigurationRequests
 {
@@ -39,6 +74,8 @@ class TtcApiConfigurationRequests
     {
         this.getNetworkConfig = getNetworkConfig;
         this.setNetworkConfig = setNetworkConfig;
+        this.getHardwareConfig = getHardwareConfig;
+        this.setHardwareConfig = setHardwareConfig;
     }
 }
 
