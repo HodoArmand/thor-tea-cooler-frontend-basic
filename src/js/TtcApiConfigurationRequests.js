@@ -9,17 +9,13 @@ const getNetworkConfig = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
 const setNetworkConfig = (formData) =>
 {
-    let requestData = new URLSearchParams({
-        debugMode: formData.debugMode,
-        ssid: formData.ssid,
-        password: formData.password,
-    });
+    let requestData = new URLSearchParams(formData);
 
     return axios.put('setNetworkConfig', requestData)
         .then(response =>
@@ -28,7 +24,7 @@ const setNetworkConfig = (formData) =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
@@ -41,20 +37,13 @@ const getHardwareConfig = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
 const setHardwareConfig = (formData) =>
 {
-    let requestData = new URLSearchParams({
-        debugMode: formData.debugMode,
-        relayIoPin1: formData.relayIoPin1,
-        relayIoPin2: formData.relayIoPin2,
-        oneWireIoPin: formData.oneWireIoPin,
-        temperatureSensorOffsetCelsius: formData.temperatureSensorOffsetCelsius,
-        temperatureTargetDefault: formData.temperatureTargetDefault,
-    });
+    let requestData = new URLSearchParams(formData);
 
     return axios.put('setHardwareConfig', requestData)
         .then(response =>
@@ -63,7 +52,7 @@ const setHardwareConfig = (formData) =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
@@ -76,22 +65,13 @@ const getServerConfig = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
 const setServerConfig = (formData) =>
 {
-    let requestData = new URLSearchParams({
-        debugMode: formData.debugMode,
-        port: formData.port,
-        apiKeyLength: formData.apiKeyLength,
-        apiThrottleIntervalMs: formData.apiThrottleIntervalMs,
-        maxStoredUsers: formData.maxStoredUsers,
-        maxApiKeysPerUser: formData.maxApiKeysPerUser,
-        maxApiKeysTotal: formData.maxApiKeysTotal,
-        selfHostMode: formData.selfHostMode,
-    });
+    let requestData = new URLSearchParams(formData);
 
     return axios.put('setServerConfig', requestData)
         .then(response =>
@@ -100,7 +80,22 @@ const setServerConfig = (formData) =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
+        });
+};
+
+const editUser = (formData) =>
+{
+    let requestData = new URLSearchParams(formData);
+
+    return axios.put('editUser', requestData)
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
@@ -111,10 +106,14 @@ class TtcApiConfigurationRequests
     {
         this.getNetworkConfig = getNetworkConfig;
         this.setNetworkConfig = setNetworkConfig;
+
         this.getHardwareConfig = getHardwareConfig;
         this.setHardwareConfig = setHardwareConfig;
+
         this.getServerConfig = getServerConfig;
         this.setServerConfig = setServerConfig;
+
+        this.editUser = editUser;
     }
 }
 

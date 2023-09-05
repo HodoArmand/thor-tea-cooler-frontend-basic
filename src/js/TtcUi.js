@@ -310,7 +310,7 @@ const initializeStyledNumberInputs = () =>
         const target = btn.nextElementSibling;
         let value = Number(target.value);
         const step = Number(target.step);
-        const minValue = Number(target.min);
+        const minValue = target.min ? Number(target.min) : Number.MIN_VALUE;
         if (value - step >= minValue)
         {
             value = (step % 1.0 !== 0) ? formatFloat(value - step) : value - step;
@@ -326,7 +326,7 @@ const initializeStyledNumberInputs = () =>
         const target = btn.nextElementSibling;
         let value = Number(target.value);
         const step = Number(target.step);
-        const maxValue = Number(target.max);
+        const maxValue = target.max ? Number(target.max) : Number.MAX_VALUE;
         if (value + step <= maxValue)
         {
             value = (step % 1.0 !== 0) ? formatFloat(value + step) : value + step;

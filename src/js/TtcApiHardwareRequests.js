@@ -14,7 +14,7 @@ const switchRelay = (relayNumber) =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -48,7 +48,7 @@ const setRelays = (relay1_, relay2_) =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -62,7 +62,7 @@ const setModeManual = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -81,7 +81,7 @@ const setTargetTemperature = (targetTemperature_) =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -95,7 +95,7 @@ const setModeAuto = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -109,7 +109,7 @@ const startAutoCooling = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -123,7 +123,7 @@ const stopAutoCooling = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -137,7 +137,7 @@ const restartMcu = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };
@@ -151,7 +151,7 @@ const isTtc = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 
 };

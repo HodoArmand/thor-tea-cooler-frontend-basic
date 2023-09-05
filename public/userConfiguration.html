@@ -98,33 +98,33 @@
                 <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 p-5">
                     <div>
                         <div class="block input-label-top">Name</div>
-                        <div id="info-name">namePlaceholder</div>
+                        <div id="info-name"></div>
                     </div>
                     <div id="input-group-name">
                         <label for="name" class="block input-label-top">New name</label>
-                        <input type="text" id="name" name="name" minlength="1" maxlength="128"
+                        <input type="text" id="name" name="name" minlength="1" maxlength="128" data-editUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                     <div id="input-group-password">
                         <div class="flex justify-between items-center">
                             <label for="password" class="block input-label-top">New password</label>
                         </div>
-                        <input type="password" id="password" name="password" minlength="1" maxlength="128"
+                        <input type="password" id="password" name="password" minlength="1" maxlength="128" data-editUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
-                    <div id="input-group-password-confirm">
+                    <div id="input-group-password_confirmed">
                         <div class="flex justify-between items-center">
-                            <label for="password-confirm" class="block input-label-top">Confirm new password</label>
+                            <label for="password_confirmed" class="block input-label-top">Confirm new password</label>
                         </div>
-                        <input type="password" id="password-confirm" name="password-confirm" minlength="1" maxlength="128"
+                        <input type="password" id="password_confirmed" name="password_confirmed" minlength="1" maxlength="128" data-editUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                 </div>
-                <button id="saveUserConfigButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                <button id="editUserButton" type="button" onclick="ttcClient.editUser()" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
                     <img src="img/floppy.svg" alt="💾" class="injectable icon-md">
                     <span>Save</span>
                 </button>
-                <button id="saveUserConfigButtonLoader" type="button" onclick=""
+                <button id="editUserButtonLoader" type="button" onclick=""
                         class="!hidden button-save !mt-5">
                     <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
                 </button>
@@ -132,6 +132,7 @@
                 <h2>Delete Account</h2>
                 <div class="p-5">This action is permanent and restoring your account after deletion will not be possible!</div>
                 <!--                TODO: add confirm del modal too-->
+                <!--                TODO: add icons to other config pages too-->
                 <button id="deleteUserButton" type="button" onclick="" class="button-delete w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
                     <img src="img/trash-x.svg" alt="🗑" class="injectable icon-md">
                     <span>Delete</span>
@@ -258,8 +259,7 @@
         else
         {
             window.ttcClient.ui.initializeStyledNumberInputs();
-            //    fetchdata
-            // ui setdata
+            document.getElementById("info-name").innerText = localStorage.getItem("ttcUserName");
         }
     }
 </script>

@@ -15,7 +15,7 @@ const login = (name_, password_) =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
@@ -28,7 +28,7 @@ const logout = () =>
         })
         .catch(error =>
         {
-            return errorResponseToTtcApiResponse(error);
+            throw errorResponseToTtcApiResponse(error);
         });
 };
 
