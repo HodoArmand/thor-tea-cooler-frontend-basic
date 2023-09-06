@@ -43,29 +43,31 @@ html, body {
     height: 100%;
 }
 
-.bg-green-gradient-animated {
-    /*background: url('/img/greenshapes.svg'), linear-gradient(-45deg, #86efac, #f0fdf4, #86efac);*/
-    background: url('./../img/greenshapes.svg'), #f0fdf4; /* with bg-green-50*/
-    background-size: 100% 100%, 400% 400%;
-    animation: gradient 15s ease infinite;
-}
-
-:is(.dark .dark\:bg-green-gradient-animated-dark) {
-    /*background: url('/img/greenshapes-opacity.svg'), linear-gradient(-45deg, #020617, #052e16, #020617);*/
-    background: url('./../img/greenshapes-opacity.svg'), #052e16; /* with bg-green-950*/
-    background-size: 100% 100%, 400% 400%;
-    animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0 50%;
+@layer utilities {
+    .bg-green-gradient-animated {
+        /*background: url('/img/greenshapes.svg'), linear-gradient(-45deg, #86efac, #f0fdf4, #86efac);*/
+        background: url('./../img/greenshapes.svg'), #f0fdf4; /* with bg-green-50*/
+        background-size: 100% 100%, 400% 400%;
+        animation: gradient 15s ease infinite;
     }
-    50% {
-        background-position: 100% 50%;
+
+    .bg-green-gradient-animated-dark {
+        /*background: url('/img/greenshapes-opacity.svg'), linear-gradient(-45deg, #020617, #052e16, #020617);*/
+        background: url('./../img/greenshapes-opacity.svg'), #052e16; /* with bg-green-950*/
+        background-size: 100% 100%, 400% 400%;
+        animation: gradient 15s ease infinite;
     }
-    100% {
-        background-position: 0 50%;
+
+    @keyframes gradient {
+        0% {
+            background-position: 0 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0 50%;
+        }
     }
 }
 
@@ -234,20 +236,20 @@ input[type="range"]::-moz-range-thumb {
 .login-body {
     @apply flex flex-row items-center min-h-screen w-full;
     @apply m-0 p-0;
-    @apply bg-green-50 dark:bg-green-900 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
+    @apply bg-green-50 dark:bg-green-950 sm:bg-green-gradient-animated dark:sm:bg-green-gradient-animated-dark;
 }
 
 .index-body {
     @apply min-h-screen w-full flex flex-col;
     @apply m-0 p-0;
-    @apply bg-green-50 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
+    @apply bg-green-50 dark:bg-green-950 sm:bg-green-gradient-animated dark:sm:bg-green-gradient-animated-dark;
 }
 
 .config-body {
     @apply min-h-screen h-fit w-full flex flex-col justify-stretch;
     @apply m-0 p-0;
     @apply text-gray-800 dark:text-gray-300;
-    @apply bg-green-50 bg-green-gradient-animated dark:bg-green-gradient-animated-dark;
+    @apply bg-green-50 dark:bg-green-950 sm:bg-green-gradient-animated dark:sm:bg-green-gradient-animated-dark;
 }
 
 .loginCard {
@@ -354,6 +356,13 @@ input[type="range"]::-moz-range-thumb {
 
 .teaControlGroupCardFooter {
     @apply mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700;
+}
+
+#configSidebar {
+    @apply flex flex-row justify-between sm:flex-col w-full sm:w-fit h-fit sm:h-full;
+    @apply p-2 sm:space-y-2 overflow-y-auto;
+    @apply backdrop-blur-sm bg-white/80 dark:bg-gray-900/80;
+    @apply sm:border-b sm:border-r dark:border-green-700/50;
 }
 
 #configSidebar a {
