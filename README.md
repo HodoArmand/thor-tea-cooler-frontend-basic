@@ -1,6 +1,6 @@
 # Thor Tea Cooler - Basic frontend client application
 
-This is a simple client webapplication for the [Thor tea Cooler](https://github.com/HodoArmand/thor-tea-cooler) IoT Device's API. The frontend code was built with the traditional HTML5+CSS3+JS ES6 techstack. The application offers support for all hardware functions, login/auth pages and a GUI for device configuration with responsive webdesign and light/darkmode support.
+This is a simple client webapplication for the [Thor Tea Cooler (TTC)](https://github.com/HodoArmand/thor-tea-cooler) IoT Device's API. The frontend code was built with the traditional HTML5+CSS3+JS ES6 techstack. The application offers support for all hardware functions, login/auth pages and a GUI for device configuration with responsive webdesign and light/darkmode support.
 
 ![Screenshot - Light mode](https://github.com/HodoArmand/thor-tea-cooler-frontend-basic/blob/main/docs/ttcScreenshotLight.JPG)
 
