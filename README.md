@@ -8,13 +8,15 @@ This is a simple client webapplication for the [Thor tea Cooler](https://github.
 
 ![Screenshot of a configurations page - Light mode](https://github.com/HodoArmand/thor-tea-cooler-frontend-basic/blob/main/docs/ttcScreenshotLightConfig.JPG)
 
-# Build Instructions
+# Build & Deploy Instructions
 
 The project uses npm build tools for quick development, download and build the public CSS and JS files with:
 
 ```
 npm run prod
 ```
+
+Then simply host the */public* folder with any VPS service, with the *index.html* as entry point.
 
 # Development tools
 
@@ -78,6 +80,6 @@ npm run clean-js
 npm run clean-css
 ```
 
-# Libraries used
+# Libraries and Resources used
 
-The project utilizes [npm](https://www.npmjs.com/) for build tools. Styling is build with [tailwindCSS](https://tailwindcss.com/), [SVGInject](https://github.com/iconfu/svg-inject) is used for styleable svg images. Live temperature chart is built with [ChartJS](https://www.chartjs.org/). Promise based async HTTP requests are made with the amazing [Axios HTTP Client library](https://github.com/axios/axios). Free and open source web icons from [Tabler Icons](https://tabler-icons.io/).
+The project utilizes [npm](https://www.npmjs.com/) for build tools. Styling is built with [tailwindCSS](https://tailwindcss.com/), [SVGInject](https://github.com/iconfu/svg-inject) is used for styleable svg images. Live temperature chart is built with [ChartJS](https://www.chartjs.org/). Promise based async HTTP requests are made with the amazing [Axios HTTP Client library](https://github.com/axios/axios). Free and open source web icons from [Tabler Icons](https://tabler-icons.io/).
