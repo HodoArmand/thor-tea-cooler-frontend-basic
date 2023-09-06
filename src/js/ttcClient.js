@@ -704,6 +704,26 @@ class TtcClient
             });
     };
 
+    checkAuth = () =>
+    {
+        this.api.hwRequests.getHardwareState()
+            .then(result =>
+            {
+                if (result.statusCode !== 200)
+                {
+                    this.api.auth.userName = 'unset';
+                    this.api.auth.apiKey = 'unset';
+                    window.location.replace('./login');
+                }
+            })
+            .catch(error =>
+            {
+                this.api.auth.userName = 'unset';
+                this.api.auth.apiKey = 'unset';
+                window.location.replace('./login');
+            });
+    };
+
 }
 
 const initSSEventlisteners = (sse) =>

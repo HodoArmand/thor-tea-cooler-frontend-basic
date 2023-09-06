@@ -1,4 +1,4 @@
-import {responseToTtcApiResponse, responseToTtcApiResponseComplexMsg, errorResponseToTtcApiResponse} from "./TtcClientUtilities.js";
+import {responseToTtcApiResponse, errorResponseToTtcApiResponse} from "./TtcClientUtilities.js";
 
 const getNetworkConfig = () =>
 {
