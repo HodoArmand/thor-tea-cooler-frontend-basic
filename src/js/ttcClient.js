@@ -573,6 +573,35 @@ class TtcClient
             });
     };
 
+    restartMcu = () =>
+    {
+        this.ui.toggleButtonLoading("restartMcuTtcHardwareConfigButton");
+
+        this.api.configRequests.restartMcu()
+            .then(result =>
+            {
+                if (result.statusCode === 201 && result.status === "ok")
+                {
+                    this.ui.openModal('info', result.status, result.msg);
+                }
+                else
+                {
+                    console.log("-1- restartMcu: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- restartMcu error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
+            })
+            .finally(() =>
+            {
+                this.ui.toggleButtonLoading("restartMcuTtcHardwareConfigButton");
+            });
+    };
+
     editUser = () =>
     {
         this.ui.toggleButtonLoading("editUserButton");

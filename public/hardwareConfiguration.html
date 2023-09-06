@@ -59,8 +59,8 @@
         </div>
     </nav>
 </header>
-<main class="h-full w-full flex flex-row">
-    <aside id="configSidebar" class="flex flex-col w-20 h-full px-2 py-2 space-y-2 overflow-y-auto bg-white/80 backdrop-blur-sm border-r dark:bg-gray-900/80 dark:border-green-700/50">
+<main class="h-full w-full flex-auto flex flex-col sm:flex-row">
+    <aside id="configSidebar" class="flex flex-row justify-between sm:flex-col w-full sm:w-fit h-fit sm:h-full p-2 sm:space-y-2 overflow-y-auto bg-white/80 backdrop-blur-sm border-r dark:bg-gray-900/80 dark:border-green-700/50">
         <a class="px-4 justify-center" href="./userConfiguration">
             <img src="img/user.svg" alt="👥" class="injectable icon-md flex-none">
             <span class="!hidden font-medium">User</span>
@@ -83,7 +83,7 @@
                 <span class="font-medium">Close</span>
             </button>
         </div>
-        <div id="configSideBarOpen" class="w-full justify-center pt-2 border-t-2 border-green-700/50">
+        <div id="configSideBarOpen" class="hidden sm:flex w-full justify-center pt-2 border-t-2 border-green-700/50">
             <button type="button" onclick="ttcClient.ui.configSidebarOpen()">
                 <img src="img/chevron-right.svg" alt=">" class="injectable icon-md flex-none">
             </button>
@@ -168,6 +168,14 @@
                     <span>Save</span>
                 </button>
                 <button id="saveTtcHardwareConfigButtonLoader" type="button" onclick=""
+                        class="!hidden button-save w-full sm:w-1/2 self-center !mt-5">
+                    <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
+                </button>
+                <button id="restartMcuTtcHardwareConfigButton" type="button" onclick="ttcClient.restartMcu()" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                    <img src="img/power.svg" alt="⏻" class="injectable icon-md">
+                    <span>Restart</span>
+                </button>
+                <button id="restartMcuTtcHardwareConfigButtonLoader" type="button" onclick=""
                         class="!hidden button-save w-full sm:w-1/2 self-center !mt-5">
                     <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
                 </button>

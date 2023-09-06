@@ -84,6 +84,19 @@ const setServerConfig = (formData) =>
         });
 };
 
+const restartMcu = () =>
+{
+    return axios.post('restartMcu')
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            throw errorResponseToTtcApiResponse(error);
+        });
+};
+
 const editUser = (formData) =>
 {
     let requestData = new URLSearchParams(formData);
@@ -139,6 +152,7 @@ class TtcApiConfigurationRequests
 
         this.getHardwareConfig = getHardwareConfig;
         this.setHardwareConfig = setHardwareConfig;
+        this.restartMcu = restartMcu;
 
         this.getServerConfig = getServerConfig;
         this.setServerConfig = setServerConfig;

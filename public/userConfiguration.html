@@ -59,8 +59,8 @@
         </div>
     </nav>
 </header>
-<main class="h-full w-full flex flex-row">
-    <aside id="configSidebar" class="flex flex-col w-20 h-full px-2 py-2 space-y-2 overflow-y-auto bg-white/80 backdrop-blur-sm border-r dark:bg-gray-900/80 dark:border-green-700/50">
+<main class="h-full w-full flex-auto flex flex-col sm:flex-row">
+    <aside id="configSidebar" class="flex flex-row justify-between sm:flex-col w-full sm:w-fit h-fit sm:h-full p-2 sm:space-y-2 overflow-y-auto bg-white/80 backdrop-blur-sm border-r dark:bg-gray-900/80 dark:border-green-700/50">
         <a class="px-4 justify-center active" href="./userConfiguration">
             <img src="img/user.svg" alt="👥" class="injectable icon-md flex-none">
             <span class="!hidden font-medium">User</span>
@@ -83,7 +83,7 @@
                 <span class="font-medium">Close</span>
             </button>
         </div>
-        <div id="configSideBarOpen" class="w-full justify-center pt-2 border-t-2 border-green-700/50">
+        <div id="configSideBarOpen" class="hidden sm:flex w-full justify-center pt-2 border-t-2 border-green-700/50">
             <button type="button" onclick="ttcClient.ui.configSidebarOpen()">
                 <img src="img/chevron-right.svg" alt=">" class="injectable icon-md flex-none">
             </button>
@@ -93,28 +93,39 @@
         <div id="configPageContentContainer"
              class="container w-full sm:w-fit flex flex-row justify-center content-start px-2 sm:px-10 py-5 sm:m-5 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm sm:rounded-lg shadow-md">
             <div id="configPageContentLayout" class="w-fit h-full flex flex-col space-y-2 pt-2">
-                <!--                TODO: unfuck page height here on mobile view-->
                 <h2>User profile</h2>
                 <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 p-5">
                     <div>
-                        <div class="block input-label-top">Name</div>
-                        <div id="info-name"></div>
+                        <div class="block input-label-top">
+                            <img src="img/user.svg" alt="" class="injectable inline-block icon-md mr-1">
+                            <span>Name</span>
+                        </div>
+                        <div id="info-name" class="requestData py-3 px-4 block w-full text-input italic"></div>
                     </div>
                     <div id="input-group-name">
-                        <label for="name" class="block input-label-top">New name</label>
+                        <label for="name" class="block input-label-top">
+                            <img src="img/user.svg" alt="" class="injectable inline-block icon-md mr-1">
+                            <span>New name</span>
+                        </label>
                         <input type="text" id="name" name="name" minlength="1" maxlength="128" data-editUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                     <div id="input-group-password">
                         <div class="flex justify-between items-center">
-                            <label for="password" class="block input-label-top">New password</label>
+                            <label for="password" class="block input-label-top">
+                                <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
+                                <span>New password</span>
+                            </label>
                         </div>
                         <input type="password" id="password" name="password" minlength="1" maxlength="128" data-editUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                     <div id="input-group-password_confirmed">
                         <div class="flex justify-between items-center">
-                            <label for="password_confirmed" class="block input-label-top">Confirm new password</label>
+                            <label for="password_confirmed" class="block input-label-top">
+                                <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
+                                <span>Confirm new password</span>
+                            </label>
                         </div>
                         <input type="password" id="password_confirmed" name="password_confirmed" minlength="1" maxlength="128" data-editUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
@@ -131,7 +142,6 @@
 
                 <h2>Delete Account</h2>
                 <div class="p-5">This action is permanent and restoring your account after deletion will not be possible!</div>
-                <!--                TODO: add icons to other config pages too-->
                 <button id="deleteUserConfirmButton" type="button" class="button-delete w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled"
                         onclick="ttcClient.ui.openModal('deleteConfirm','Confirm delete','Are you sure you want to delete your account? This action is permanent and your account can not be restored later.')"
                 >
@@ -142,20 +152,29 @@
                 <h2>New User</h2>
                 <div class="w-full h-full flex flex-col items-center space-y-2">
                     <div id="input-group-register-name" class="w-full sm:w-2/3 md:w-1/2">
-                        <label for="reg_name" class="block input-label-top">Name</label>
+                        <label for="reg_name" class="block input-label-top">
+                            <img src="img/user.svg" alt="" class="injectable inline-block icon-md mr-1">
+                            <span>Name</span>
+                        </label>
                         <input type="text" id="reg_name" name="name" minlength="1" maxlength="128" data-registerUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                     <div id="input-group-register-password" class="w-full sm:w-2/3 md:w-1/2">
                         <div class="flex justify-between items-center">
-                            <label for="reg_password" class="block input-label-top">Password</label>
+                            <label for="reg_password" class="block input-label-top">
+                                <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
+                                <span>Password</span>
+                            </label>
                         </div>
                         <input type="password" id="reg_password" name="password" minlength="1" maxlength="128" data-registerUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                     <div id="input-group-register-password-confirm" class="w-full sm:w-2/3 md:w-1/2">
                         <div class="flex justify-between items-center">
-                            <label for="reg_password_confirmed" class="block input-label-top">Confirm password</label>
+                            <label for="reg_password_confirmed" class="block input-label-top">
+                                <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
+                                <span>Confirm password</span>
+                            </label>
                         </div>
                         <input type="password" id="reg_password_confirmed" name="password_confirmed" minlength="1" maxlength="128" data-registerUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
@@ -260,14 +279,20 @@
             <div class="w-full h-full flex flex-col items-center space-y-2 pt-3 pb-5">
                 <div id="input-group-delete-password" class="w-full sm:w-2/3 md:w-1/2">
                     <div class="flex justify-between items-center">
-                        <label for="del_password" class="block input-label-top">Password</label>
+                        <label for="del_password" class="block input-label-top">
+                            <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
+                            <span>Password</span>
+                        </label>
                     </div>
                     <input type="password" id="del_password" name="password" minlength="1" maxlength="128" data-deleteUserRequest="true"
                            class="requestData py-3 px-4 block w-full text-input">
                 </div>
                 <div id="input-group-delete-password-confirm" class="w-full sm:w-2/3 md:w-1/2">
                     <div class="flex justify-between items-center">
-                        <label for="del_password_confirmed" class="block input-label-top">Confirm password</label>
+                        <label for="del_password_confirmed" class="block input-label-top">
+                            <img src="img/key.svg" alt="🔑" class="injectable inline-block icon-md mr-1">
+                            <span>Confirm password</span>
+                        </label>
                     </div>
                     <input type="password" id="del_password_confirmed" name="password_confirmed" minlength="1" maxlength="128" data-deleteUserRequest="true"
                            class="requestData py-3 px-4 block w-full text-input">
@@ -287,6 +312,7 @@
         </div>
     </div>
 </section>
+
 <!--Body scripts-->
 <script src="js/lib/preline.js"></script>
 <script defer>
