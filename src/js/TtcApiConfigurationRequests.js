@@ -114,6 +114,21 @@ const registerUser = (formData) =>
         });
 };
 
+const deleteUser = (formData) =>
+{
+    let requestData = new URLSearchParams(formData);
+
+    return axios.delete('deleteUser', {data: requestData})
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            throw errorResponseToTtcApiResponse(error);
+        });
+};
+
 
 class TtcApiConfigurationRequests
 {
@@ -130,6 +145,7 @@ class TtcApiConfigurationRequests
 
         this.editUser = editUser;
         this.registerUser = registerUser;
+        this.deleteUser = deleteUser;
     }
 }
 

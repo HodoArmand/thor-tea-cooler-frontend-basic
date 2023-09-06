@@ -131,21 +131,18 @@
 
                 <h2>Delete Account</h2>
                 <div class="p-5">This action is permanent and restoring your account after deletion will not be possible!</div>
-                <!--                TODO: add confirm del modal too-->
                 <!--                TODO: add icons to other config pages too-->
-                <button id="deleteUserButton" type="button" onclick="" class="button-delete w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                <button id="deleteUserConfirmButton" type="button" class="button-delete w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled"
+                        onclick="ttcClient.ui.openModal('deleteConfirm','Confirm delete','Are you sure you want to delete your account? This action is permanent and your account can not be restored later.')"
+                >
                     <img src="img/trash-x.svg" alt="🗑" class="injectable icon-md">
                     <span>Delete</span>
-                </button>
-                <button id="deleteUserButtonLoader" type="button" onclick=""
-                        class="!hidden button-delete !mt-5">
-                    <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
                 </button>
 
                 <h2>New User</h2>
                 <div class="w-full h-full flex flex-col items-center space-y-2">
                     <div id="input-group-register-name" class="w-full sm:w-2/3 md:w-1/2">
-                        <label for="register-name" class="block input-label-top">Name</label>
+                        <label for="reg_name" class="block input-label-top">Name</label>
                         <input type="text" id="reg_name" name="name" minlength="1" maxlength="128" data-registerUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
@@ -239,6 +236,57 @@
     </div>
 </section>
 
+<section id="deleteConfirmModal" class="hs-overlay hidden modalSection">
+    <div class="modalWrapper">
+        <div class="modalCard">
+            <div class="modalHeader">
+                <div class="flex inline-flex space-x-2 text-gray-800 dark:text-white">
+                    <img src="img/alert-octagon.svg" class="injectable inline icon-md" alt="Alert">
+                    <h3 id="deleteConfirmModalTitle" class="font-bold">
+                        Modal title
+                    </h3>
+                </div>
+                <button type="button" onclick="ttcClient.ui.closeModal('deleteConfirm')"
+                        class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center icon-xl rounded-md text-gray-500 hover:text-gray-400 text-sm">
+                    <span class="sr-only">Close</span>
+                    <img src="img/nav-menu-opened.svg" alt="X" class="icon-sm injectable">
+                </button>
+            </div>
+            <div class="p-4 overflow-y-auto space-y-4">
+                <p id="deleteConfirmModalDesc" class="mt-1 text-gray-800 dark:text-gray-400">
+                    Desc
+                </p>
+            </div>
+            <div class="w-full h-full flex flex-col items-center space-y-2 pt-3 pb-5">
+                <div id="input-group-delete-password" class="w-full sm:w-2/3 md:w-1/2">
+                    <div class="flex justify-between items-center">
+                        <label for="del_password" class="block input-label-top">Password</label>
+                    </div>
+                    <input type="password" id="del_password" name="password" minlength="1" maxlength="128" data-deleteUserRequest="true"
+                           class="requestData py-3 px-4 block w-full text-input">
+                </div>
+                <div id="input-group-delete-password-confirm" class="w-full sm:w-2/3 md:w-1/2">
+                    <div class="flex justify-between items-center">
+                        <label for="del_password_confirmed" class="block input-label-top">Confirm password</label>
+                    </div>
+                    <input type="password" id="del_password_confirmed" name="password_confirmed" minlength="1" maxlength="128" data-deleteUserRequest="true"
+                           class="requestData py-3 px-4 block w-full text-input">
+                </div>
+            </div>
+            <div class="flex justify-end items-center border-t dark:border-gray-700 rounded-b-lg">
+                <button id="deleteUserButton" type="button" onclick="ttcClient.deleteUser()" class="modalButtonHalfLeft">
+                    Yes, delete.
+                </button>
+                <button id="deleteUserButtonLoader" type="button" onclick="ttcClient.deleteUser()" class="modalButtonHalfLeft !hidden">
+                    <img src="img/loader.svg" class="injectable icon-loader" alt="loading..">
+                </button>
+                <button type="button" onclick="ttcClient.ui.closeModal('deleteConfirm')" class="modalButtonHalfRight">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 <!--Body scripts-->
 <script src="js/lib/preline.js"></script>
 <script defer>

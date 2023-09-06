@@ -107,8 +107,8 @@ class TtcClient
             {
                 // TODO: durther QA testing for no response errors
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- setTargetTemperature error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- setTargetTemperature error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -140,8 +140,8 @@ class TtcClient
             {
                 // TODO: durther QA testing for no response errors
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- setTargetTemperature error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- setTargetTemperature error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -170,8 +170,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- setModeAutoReady error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- setModeAutoReady error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -200,8 +200,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- setModeManual error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- setModeManual error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -230,8 +230,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- startAutoCooling error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- startAutoCooling error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -260,8 +260,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- stopAutoCooling error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- stopAutoCooling error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -289,8 +289,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- switchRelay error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- switchRelay error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -324,8 +324,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- login error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- login error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -354,8 +354,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- logout error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- logout error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             });
     };
 
@@ -396,7 +396,7 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- isTtc error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- isTtc error: " + error.msg + '\nField Errors:\n' + fieldErrors);
                 this.ui.openModal('info', 'Error - Not a TTC Device or System error.', 'No TTC Device was found at the given address or there was a system error when making the request.');
 
                 document.getElementById("ttcIpNotOk").classList.remove("!hidden");
@@ -427,8 +427,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- getNetworkConfig error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- getNetworkConfig error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             });
     };
 
@@ -454,8 +454,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- setNetworkConfig error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- setNetworkConfig error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -482,8 +482,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- getHardwareConfig error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- getHardwareConfig error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             });
     };
 
@@ -509,8 +509,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- setHardwareConfig error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- setHardwareConfig error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -537,8 +537,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- getServerConfig error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- getServerConfig error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             });
     };
 
@@ -564,8 +564,8 @@ class TtcClient
             .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- setHardwareConfig error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- setHardwareConfig error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -595,11 +595,11 @@ class TtcClient
                     this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
                 }
             })
-            .catch( error =>
+            .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- editUser error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- editUser error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
@@ -613,7 +613,7 @@ class TtcClient
 
         let formData = getFormDataByDataTag("registerUserRequest");
 
-        this.api.configRequests.editUser(formData)
+        this.api.configRequests.registerUser(formData)
             .then(result =>
             {
                 if (result.statusCode === 201 && result.status === "ok")
@@ -626,15 +626,52 @@ class TtcClient
                     this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
                 }
             })
-            .catch( error =>
+            .catch(error =>
             {
                 let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
-                console.log("-1- registerUser error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
-                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+                console.log("-1- registerUser error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
             })
             .finally(() =>
             {
                 this.ui.toggleButtonLoading("registerUserButton");
+            });
+    };
+
+    deleteUser = () =>
+    {
+        this.ui.toggleButtonLoading("deleteUserButton");
+
+        let formData = getFormDataByDataTag("deleteUserRequest");
+        console.log(formData);
+
+        this.api.configRequests.deleteUser(formData)
+            .then(result =>
+            {
+                if (result.statusCode === 201 && result.status === "ok")
+                {
+                    this.ui.closeModal('deleteConfirm');
+                    this.ui.openModal('info', result.status, "User deleted successfully, will be redirected to login page in 5 seconds.");
+                    setTimeout(() =>
+                    {
+                        window.location.replace('./login');
+                    }, 5000);
+                }
+                else
+                {
+                    console.log("-1- registerUser: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch(error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- registerUser error: " + error.msg + '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg + '\nField Errors:\n' + fieldErrors);
+            })
+            .finally(() =>
+            {
+                this.ui.toggleButtonLoading("deleteUserButton");
             });
     };
 
