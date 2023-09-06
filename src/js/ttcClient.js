@@ -607,6 +607,37 @@ class TtcClient
             });
     };
 
+    registerUser = () =>
+    {
+        this.ui.toggleButtonLoading("registerUserButton");
+
+        let formData = getFormDataByDataTag("registerUserRequest");
+
+        this.api.configRequests.editUser(formData)
+            .then(result =>
+            {
+                if (result.statusCode === 201 && result.status === "ok")
+                {
+                    this.ui.openModal('info', result.status, "User registered successfully.");
+                }
+                else
+                {
+                    console.log("-1- registerUser: " + result.status + result.msg + '\nField Errors:\n' + fieldErrors);
+                    this.ui.openModal('info', result.status, result.msg + '\nField Errors:\n' + fieldErrors);
+                }
+            })
+            .catch( error =>
+            {
+                let fieldErrors = error.fieldErrors ? error.fieldErrors.join('\n') : 'none';
+                console.log("-1- registerUser error: " + error.msg +  '\nField Errors:\n' + fieldErrors);
+                this.ui.openModal('info', 'Error', error.msg +  '\nField Errors:\n' + fieldErrors);
+            })
+            .finally(() =>
+            {
+                this.ui.toggleButtonLoading("registerUserButton");
+            });
+    };
+
 }
 
 const initSSEventlisteners = (sse) =>

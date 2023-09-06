@@ -143,28 +143,28 @@
                 </button>
 
                 <h2>New User</h2>
-                <div class="w-full h-full flex flex-col items-center">
+                <div class="w-full h-full flex flex-col items-center space-y-2">
                     <div id="input-group-register-name" class="w-full sm:w-2/3 md:w-1/2">
                         <label for="register-name" class="block input-label-top">Name</label>
-                        <input type="text" id="register-name" name="register-name" minlength="1" maxlength="128"
+                        <input type="text" id="reg_name" name="name" minlength="1" maxlength="128" data-registerUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                     <div id="input-group-register-password" class="w-full sm:w-2/3 md:w-1/2">
                         <div class="flex justify-between items-center">
-                            <label for="register-password" class="block input-label-top">Password</label>
+                            <label for="reg_password" class="block input-label-top">Password</label>
                         </div>
-                        <input type="password" id="register-password" name="register-password" minlength="1" maxlength="128"
+                        <input type="password" id="reg_password" name="password" minlength="1" maxlength="128" data-registerUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                     <div id="input-group-register-password-confirm" class="w-full sm:w-2/3 md:w-1/2">
                         <div class="flex justify-between items-center">
-                            <label for="register-password-confirm" class="block input-label-top">Confirm password</label>
+                            <label for="reg_password_confirmed" class="block input-label-top">Confirm password</label>
                         </div>
-                        <input type="password" id="register-password-confirm" name="register-password-confirm" minlength="1" maxlength="128"
+                        <input type="password" id="reg_password_confirmed" name="password_confirmed" minlength="1" maxlength="128" data-registerUserRequest="true"
                                class="requestData py-3 px-4 block w-full text-input">
                     </div>
                 </div>
-                <button id="registerUserButton" type="button" onclick="" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
+                <button id="registerUserButton" type="button" onclick="ttcClient.registerUser()" class="button-save w-full sm:w-1/2 self-center !mt-5 disabled:control-disabled">
                     <img src="img/user-plus.svg" alt="+" class="injectable icon-md">
                     <span>Register</span>
                 </button>

@@ -99,6 +99,21 @@ const editUser = (formData) =>
         });
 };
 
+const registerUser = (formData) =>
+{
+    let requestData = new URLSearchParams(formData);
+
+    return axios.post('registerUser', requestData)
+        .then(response =>
+        {
+            return responseToTtcApiResponse(response);
+        })
+        .catch(error =>
+        {
+            throw errorResponseToTtcApiResponse(error);
+        });
+};
+
 
 class TtcApiConfigurationRequests
 {
@@ -114,6 +129,7 @@ class TtcApiConfigurationRequests
         this.setServerConfig = setServerConfig;
 
         this.editUser = editUser;
+        this.registerUser = registerUser;
     }
 }
 
