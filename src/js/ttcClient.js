@@ -30,20 +30,6 @@ class TtcClient
     {
         this._api = new TtcApiInterface();
         this._ui = new TtcUi();
-
-        let url = window.location.href;
-        let isIndexPage = (url.indexOf("login") === -1 && url.indexOf("configuration") === -1 && url.indexOf("Configuration") === -1);
-        let isConfigPage = (url.indexOf("configuration") !== -1 || url.indexOf("Configuration") !== -1);
-
-        if (isIndexPage)
-        {
-            this.sse = new EventSource('//' + this.api.ttcIp + '/events');
-            this.initSSEventlisteners = initSSEventlisteners;
-
-            this.initSSEventlisteners(this.sse);
-
-            this.setTeaStateValues();
-        }
     }
 
     setTeaStateValues = () =>
@@ -714,6 +700,22 @@ class TtcClient
                     this.api.auth.userName = 'unset';
                     this.api.auth.apiKey = 'unset';
                     window.location.replace('./login');
+                }
+                else
+                {
+                    let url = window.location.href;
+                    let isIndexPage = (url.indexOf("login") === -1 && url.indexOf("configuration") === -1 && url.indexOf("Configuration") === -1);
+                    let isConfigPage = (url.indexOf("configuration") !== -1 || url.indexOf("Configuration") !== -1);
+
+                    if (isIndexPage)
+                    {
+                        this.sse = new EventSource('//' + this.api.ttcIp + '/events');
+                        this.initSSEventlisteners = initSSEventlisteners;
+
+                        this.initSSEventlisteners(this.sse);
+
+                        this.setTeaStateValues();
+                    }
                 }
             })
             .catch(error =>
