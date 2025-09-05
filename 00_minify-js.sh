@@ -10,7 +10,7 @@ for file in src/js/*.js; do
     if ! echo "$file" | grep -i -q ".min."; then
         echo "Minifying \"$file\""
         filename=$(basename "$file")
-        minify "$file" > "public/js/$filename"
+        npx minify "$file" > "public/js/$filename"
     else
         echo "Skipped: $file"
     fi
