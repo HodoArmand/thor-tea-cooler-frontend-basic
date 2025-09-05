@@ -1,0 +1,1 @@
+npx tailwindcss -i src/css/tea.css -o public/css/tea.css --watch
