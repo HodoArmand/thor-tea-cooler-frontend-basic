@@ -10,13 +10,17 @@ This is a simple client webapplication for the [Thor Tea Cooler (TTC)](https://g
 
 # Build & Deploy Instructions
 
-The project uses npm build tools for quick development, download and build the public CSS and JS files with:
+The project uses npm build tools for quick development. Using the build and dev commands requires nodeJS 19 or newer and a git bash terminal.
 
+Download and build the public CSS and JS files:
+
+>in git bash:
 ```
+npm i
 npm run prod
 ```
 
-Then simply host the */public* folder with any VPS service, with the *index.html* as entry point.
+Then simply host the */public* folder on any filer server with the *index.html* as entry point.
 
 # Development tools
 
