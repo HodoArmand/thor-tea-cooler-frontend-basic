@@ -1,21 +1,22 @@
 #!/bin/bash
 
 echo "******************************"
-echo "    Minifying JS."
+echo "	Minifying JS."
 echo "******************************"
 
-mkdir -p public/js
+if [ ! -d "public/js" ]; then
+    mkdir -p "public/js"
+fi
 
 for file in src/js/*.js; do
-    if ! echo "$file" | grep -i -q ".min."; then
+    if [[ "$file" != *".min."* ]]; then
         echo "Minifying \"$file\""
-        filename=$(basename "$file")
-        npx minify "$file" > "public/js/$filename"
+        minify "$file" > "public/js/$(basename "$file")"
     else
         echo "Skipped: $file"
     fi
 done
 
 echo "******************************"
-echo "    JS Minification finished."
+echo "	JS Minification finished."
 echo "******************************"
